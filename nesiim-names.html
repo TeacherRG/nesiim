@@ -17,16 +17,23 @@
 body{background:var(--parchment);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;min-height:100vh}
 
 /* ── Header ── */
-header{text-align:center;padding:48px 80px 32px 24px;background:linear-gradient(180deg,var(--parchment-d),var(--parchment));border-bottom:3px double var(--gold)}
+header{text-align:center;padding:48px 24px 32px;background:linear-gradient(180deg,var(--parchment-d),var(--parchment));border-bottom:3px double var(--gold)}
 .orn{font-size:1rem;color:var(--gold-l);letter-spacing:.6em;display:block;margin-bottom:12px}
 .header-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:var(--ink);line-height:1.2;direction:rtl;margin-bottom:6px}
 .header-ru{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--ink-soft);letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
 .header-sub{font-size:.88rem;color:var(--ink-soft);font-style:italic;margin-top:10px;opacity:.8;max-width:680px;margin-inline:auto;line-height:1.6}
 
+/* ── Top nav ── */
+.top-nav{position:sticky;top:0;z-index:100;background:var(--parchment-d);border-bottom:1px solid var(--border);padding:8px 20px;display:flex;align-items:center}
+
 /* ── Back button ── */
-.back-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);background:none;cursor:pointer;padding:7px 18px;font-size:.9rem;color:var(--ink-soft);border-radius:3px;font-family:'Crimson Pro',serif;transition:all .18s;text-decoration:none;margin:0 auto;position:absolute;left:20px;top:50%;transform:translateY(-50%)}
+.back-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);background:none;cursor:pointer;padding:7px 18px;font-size:.9rem;color:var(--ink-soft);border-radius:3px;font-family:'Crimson Pro',serif;transition:all .18s;text-decoration:none}
 .back-btn:hover{background:var(--gold-ll);color:var(--ink)}
-header{position:relative}
+
+/* ── Bottom nav ── */
+.bottom-nav{text-align:center;padding:32px 20px;margin-top:16px;border-top:1px solid var(--border)}
+.home-btn{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--gold);background:none;cursor:pointer;padding:10px 28px;font-size:1rem;color:var(--ink-soft);border-radius:3px;font-family:'Crimson Pro',serif;transition:all .18s;text-decoration:none}
+.home-btn:hover{background:var(--gold-ll);color:var(--ink)}
 
 /* ── Intro banner ── */
 .intro-banner{background:linear-gradient(135deg,var(--parchment-d) 60%,#e8d8b0);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:28px 24px;text-align:center;max-width:860px;margin:28px auto;border-radius:4px;box-shadow:0 2px 18px rgba(184,134,11,.1)}
@@ -111,8 +118,11 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 </head>
 <body>
 
-<header>
+<nav class="top-nav">
   <a class="back-btn" href="index.html">← Назад</a>
+</nav>
+
+<header>
   <span class="orn">✦ &nbsp; &nbsp; ✦ &nbsp; &nbsp; ✦</span>
   <div class="header-he">שְׁמוֹת הַנְּשִׂיאִים — פְּנִימִיּוּת</div>
   <div class="header-ru">Значения имён Несиим</div>
@@ -348,6 +358,10 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 </div>
 
 </main>
+
+<div class="bottom-nav">
+  <a class="home-btn" href="index.html">↩ На главную</a>
+</div>
 
 <footer>נְשִׂיאִים · Несиим · Нисан · Paris — Тарцаз · Письмо рабби Леви Ицхака</footer>
 
