@@ -516,16 +516,17 @@ function resetProgress() {
   updateReadUI();
 }
 
+var _visitCount = null;
+
 function updateVisitCounter(lang) {
   var el = document.getElementById('visit-counter');
-  if (!el) return;
-  var count = parseInt(localStorage.getItem('nesiim-visits') || '0', 10);
+  if (!el || _visitCount === null) return;
   if (lang === 'he') {
-    el.textContent = 'מבקרים: ' + count;
+    el.textContent = 'מבקרים: ' + _visitCount;
   } else if (lang === 'de') {
-    el.textContent = 'Besucher: ' + count;
+    el.textContent = 'Besucher: ' + _visitCount;
   } else {
-    el.textContent = 'Посетителей: ' + count;
+    el.textContent = 'Посетителей: ' + _visitCount;
   }
 }
 
@@ -671,12 +672,21 @@ function applyFont(val) {
 }
 
 (function() {
-  // Increment visit count once per browser session
-  if (!sessionStorage.getItem('nesiim-visited')) {
+  // Increment visit count once per browser session using external CounterAPI
+  var _alreadyVisited = sessionStorage.getItem('nesiim-visited');
+  if (!_alreadyVisited) {
     sessionStorage.setItem('nesiim-visited', '1');
-    var visits = parseInt(localStorage.getItem('nesiim-visits') || '0', 10) + 1;
-    localStorage.setItem('nesiim-visits', String(visits));
   }
+  fetch(_alreadyVisited
+    ? 'https://api.counterapi.dev/v1/nesiim/visits'
+    : 'https://api.counterapi.dev/v1/nesiim/visits/up')
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      _visitCount = data.count;
+      var activeLangBtn = document.querySelector('.lbtn.on');
+      updateVisitCounter(activeLangBtn ? activeLangBtn.getAttribute('data-lang') : 'ru');
+    })
+    .catch(function() {});
   setLang('ru');
   updateReadUI();
   var nisan1 = new Date(2026, 2, 19);
