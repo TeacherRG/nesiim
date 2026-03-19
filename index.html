@@ -59,6 +59,13 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 .read-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;border:1px solid var(--gold);background:none;cursor:pointer;padding:5px 16px;font-size:.82rem;color:var(--ink-soft);border-radius:2px;font-family:'Crimson Pro',serif;transition:all .25s}
 .read-btn:hover{background:var(--gold-ll)}.read-btn.done{background:var(--gold-ll);color:var(--gold);border-color:var(--gold);font-weight:600}
 .nb.read .n{position:relative}.nb.read .n::after{content:'✓';font-size:.55rem;color:var(--gold);vertical-align:super;margin-left:1px}
+body.lang-he .rc-wrap{display:none}
+body.lang-he .pru{display:none}
+body.lang-he .vr{grid-template-columns:1fr}
+body.lang-he .col-h{grid-template-columns:1fr}
+body.lang-he .ch:last-child{display:none}
+body.lang-he .hc{border-left:none}
+body.lang-he .dlabel{direction:rtl}
 </style>
 </head>
 <body>
@@ -67,11 +74,13 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <h1 class="he">נְשִׂיאִים</h1>
   <h1 class="ru" data-lang="ru">Несиим · Нисан</h1>
   <h1 class="ru" data-lang="de" style="display:none">Nesiim · Nissan</h1>
+  <h1 class="ru" data-lang="he" style="display:none">נְשִׂיאִים · נִיסָן</h1>
   <p class="sub" data-lang="ru">Бемидбар (Числа) 7–8 · Параллельный текст: иврит и русский перевод</p>
   <p class="sub" data-lang="de" style="display:none">Bamidbar (Numeri) 7–8 · Paralleltext: Hebräisch und Deutsch</p>
+  <p class="sub" data-lang="he" style="display:none">בְּמִדְבַּר ז׳–ח׳ · טֶקְסְט עִבְרִי</p>
 </header>
-<nav class="nav-wrap"><div class="nav-inner"><button class="nb  on" onclick="show(1)"><span class="n">א׳</span><span class="t" data-lang="ru">Иехуда<br>Нахшон</span><span class="t" data-lang="de" style="display:none">Juda<br>Nachschon</span></button><button class="nb" onclick="show(2)"><span class="n">ב׳</span><span class="t" data-lang="ru">Иссахар<br>Нетанель</span><span class="t" data-lang="de" style="display:none">Issachar<br>Netanel</span></button><button class="nb" onclick="show(3)"><span class="n">ג׳</span><span class="t" data-lang="ru">Звулун<br>Элиав</span><span class="t" data-lang="de" style="display:none">Sebulon<br>Eliav</span></button><button class="nb" onclick="show(4)"><span class="n">ד׳</span><span class="t" data-lang="ru">Реувен<br>Элицур</span><span class="t" data-lang="de" style="display:none">Ruben<br>Elitzur</span></button><button class="nb" onclick="show(5)"><span class="n">ה׳</span><span class="t" data-lang="ru">Шимон<br>Шлумиэль</span><span class="t" data-lang="de" style="display:none">Schimeon<br>Schelumiel</span></button><button class="nb" onclick="show(6)"><span class="n">ו׳</span><span class="t" data-lang="ru">Гад<br>Эльясаф</span><span class="t" data-lang="de" style="display:none">Gad<br>Eljasaf</span></button><button class="nb" onclick="show(7)"><span class="n">ז׳</span><span class="t" data-lang="ru">Эфраим<br>Элишама</span><span class="t" data-lang="de" style="display:none">Efraim<br>Elischama</span></button><button class="nb" onclick="show(8)"><span class="n">ח׳</span><span class="t" data-lang="ru">Менаше<br>Гамлиэль</span><span class="t" data-lang="de" style="display:none">Menasche<br>Gamliel</span></button><button class="nb" onclick="show(9)"><span class="n">ט׳</span><span class="t" data-lang="ru">Биньямин<br>Авидан</span><span class="t" data-lang="de" style="display:none">Benjamin<br>Avidan</span></button><button class="nb" onclick="show(10)"><span class="n">י׳</span><span class="t" data-lang="ru">Дан<br>Ахиэзер</span><span class="t" data-lang="de" style="display:none">Dan<br>Achiʿeser</span></button><button class="nb" onclick="show(11)"><span class="n">י״א</span><span class="t" data-lang="ru">Ашер<br>Пагиэль</span><span class="t" data-lang="de" style="display:none">Ascher<br>Pagʿiel</span></button><button class="nb" onclick="show(12)"><span class="n">י״ב</span><span class="t" data-lang="ru">Нафтали<br>Ахира</span><span class="t" data-lang="de" style="display:none">Naftali<br>Achira</span></button><button class="nb" onclick="show(13)"><span class="n">י״ג</span><span class="t" data-lang="ru">Итог<br>Менора</span><span class="t" data-lang="de" style="display:none">Gesamt<br>Menora</span></button></div></nav>
-<div class="lang-bar"><button class="lbtn on" data-lang="ru" onclick="setLang('ru')">Русский</button><button class="lbtn" data-lang="de" onclick="setLang('de')">Deutsch</button></div>
+<nav class="nav-wrap"><div class="nav-inner"><button class="nb  on" onclick="show(1)"><span class="n">א׳</span><span class="t" data-lang="ru">Иехуда<br>Нахшон</span><span class="t" data-lang="de" style="display:none">Juda<br>Nachschon</span><span class="t" data-lang="he" style="display:none">יְהוּדָה<br>נַחְשׁוֹן</span></button><button class="nb" onclick="show(2)"><span class="n">ב׳</span><span class="t" data-lang="ru">Иссахар<br>Нетанель</span><span class="t" data-lang="de" style="display:none">Issachar<br>Netanel</span><span class="t" data-lang="he" style="display:none">יִשָּׂשכָר<br>נְתַנְאֵל</span></button><button class="nb" onclick="show(3)"><span class="n">ג׳</span><span class="t" data-lang="ru">Звулун<br>Элиав</span><span class="t" data-lang="de" style="display:none">Sebulon<br>Eliav</span><span class="t" data-lang="he" style="display:none">זְבוּלֻן<br>אֱלִיאָב</span></button><button class="nb" onclick="show(4)"><span class="n">ד׳</span><span class="t" data-lang="ru">Реувен<br>Элицур</span><span class="t" data-lang="de" style="display:none">Ruben<br>Elitzur</span><span class="t" data-lang="he" style="display:none">רְאוּבֵן<br>אֱלִיצוּר</span></button><button class="nb" onclick="show(5)"><span class="n">ה׳</span><span class="t" data-lang="ru">Шимон<br>Шлумиэль</span><span class="t" data-lang="de" style="display:none">Schimeon<br>Schelumiel</span><span class="t" data-lang="he" style="display:none">שִׁמְעוֹן<br>שְׁלֻמִיאֵל</span></button><button class="nb" onclick="show(6)"><span class="n">ו׳</span><span class="t" data-lang="ru">Гад<br>Эльясаф</span><span class="t" data-lang="de" style="display:none">Gad<br>Eljasaf</span><span class="t" data-lang="he" style="display:none">גָּד<br>אֶלְיָסָף</span></button><button class="nb" onclick="show(7)"><span class="n">ז׳</span><span class="t" data-lang="ru">Эфраим<br>Элишама</span><span class="t" data-lang="de" style="display:none">Efraim<br>Elischama</span><span class="t" data-lang="he" style="display:none">אֶפְרַיִם<br>אֱלִישָׁמָע</span></button><button class="nb" onclick="show(8)"><span class="n">ח׳</span><span class="t" data-lang="ru">Менаше<br>Гамлиэль</span><span class="t" data-lang="de" style="display:none">Menasche<br>Gamliel</span><span class="t" data-lang="he" style="display:none">מְנַשֶּׁה<br>גַּמְלִיאֵל</span></button><button class="nb" onclick="show(9)"><span class="n">ט׳</span><span class="t" data-lang="ru">Биньямин<br>Авидан</span><span class="t" data-lang="de" style="display:none">Benjamin<br>Avidan</span><span class="t" data-lang="he" style="display:none">בִּנְיָמִן<br>אֲבִידָן</span></button><button class="nb" onclick="show(10)"><span class="n">י׳</span><span class="t" data-lang="ru">Дан<br>Ахиэзер</span><span class="t" data-lang="de" style="display:none">Dan<br>Achiʿeser</span><span class="t" data-lang="he" style="display:none">דָּן<br>אֲחִיעֶזֶר</span></button><button class="nb" onclick="show(11)"><span class="n">י״א</span><span class="t" data-lang="ru">Ашер<br>Пагиэль</span><span class="t" data-lang="de" style="display:none">Ascher<br>Pagʿiel</span><span class="t" data-lang="he" style="display:none">אָשֵׁר<br>פַּגְעִיאֵל</span></button><button class="nb" onclick="show(12)"><span class="n">י״ב</span><span class="t" data-lang="ru">Нафтали<br>Ахира</span><span class="t" data-lang="de" style="display:none">Naftali<br>Achira</span><span class="t" data-lang="he" style="display:none">נַפְתָּלִי<br>אֲחִירַע</span></button><button class="nb" onclick="show(13)"><span class="n">י״ג</span><span class="t" data-lang="ru">Итог<br>Менора</span><span class="t" data-lang="de" style="display:none">Gesamt<br>Menora</span><span class="t" data-lang="he" style="display:none">סִיכּוּם<br>מְנוֹרָה</span></button></div></nav>
+<div class="lang-bar"><button class="lbtn on" data-lang="ru" onclick="setLang('ru')">Русский</button><button class="lbtn" data-lang="de" onclick="setLang('de')">Deutsch</button><button class="lbtn" data-lang="he" onclick="setLang('he')">עברית</button></div>
 <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><span class="prog-label" id="prog-label">0 / 13</span><button class="reset-btn" onclick="resetProgress()" title="Сбросить прогресс">↺ Сброс</button></div>
 <div class="day on" id="d1">
  <div class="day-head">
@@ -411,14 +420,64 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 
  <p class="note13 lang-ru" data-lang="ru">В тринадцатый день молитва «יְהִי רָצוֹן» не читается</p>
  <p class="note13 lang-de" data-lang="de" style="display:none">Am dreizehnten Tag wird das Gebet »יְהִי רָצוֹן« nicht gesprochen</p>
+ <p class="note13" data-lang="he" style="display:none">בְּיוֹם הַשְּׁלֹשָׁה עָשָׂר אֵין אוֹמְרִים תְּפִלַּת «יְהִי רָצוֹן»</p>
 </div>
 <footer>
   <span data-lang="ru">נְשִׂיאִים · Бемидбар 7–8 · Нисан 5786 · На основе текста Chabad.org</span>
   <span data-lang="de" style="display:none">נְשִׂיאִים · Bamidbar 7–8 · Nissan 5786 · Basierend auf dem Text von Chabad.org</span>
+  <span data-lang="he" style="display:none">נְשִׂיאִים · בְּמִדְבַּר ז׳–ח׳ · נִיסָן תשפ״ו · מבוסס על טקסט Chabad.org</span>
   <br>© Clubchitas 5786 · <a href="mailto:kosherletter@gmail.com" style="color:var(--gold-l);text-decoration:none">kosherletter@gmail.com</a>
 </footer>
 <script>
 var TOTAL_DAYS = 13;
+
+var DLABEL_RU = [
+  'День первый · א׳ בְּנִיסָן · ראש חודש ניסן',
+  'День второй · ב׳ בְּנִיסָן',
+  'День третий · ג׳ בְּנִיסָן',
+  'День четвёртый · ד׳ בְּנִיסָן',
+  'День пятый · ה׳ בְּנִיסָן',
+  'День шестой · ו׳ בְּנִיסָן',
+  'День седьмой · ז׳ בְּנִיסָן',
+  'День восьмой · ח׳ בְּנִיסָן',
+  'День девятый · ט׳ בְּנִיסָן',
+  'День десятый · י׳ בְּנִיסָן',
+  'День одиннадцатый · י״א בְּנִיסָן',
+  'День двенадцатый · י״ב בְּנִיסָן',
+  'День тринадцатый · י״ג בְּנִיסָן'
+];
+
+var DLABEL_HE = [
+  'יוֹם רִאשׁוֹן · א׳ בְּנִיסָן · ראש חודש ניסן',
+  'יוֹם שֵׁנִי · ב׳ בְּנִיסָן',
+  'יוֹם שְׁלִישִׁי · ג׳ בְּנִיסָן',
+  'יוֹם רְבִיעִי · ד׳ בְּנִיסָן',
+  'יוֹם חֲמִישִׁי · ה׳ בְּנִיסָן',
+  'יוֹם שִׁשִּׁי · ו׳ בְּנִיסָן',
+  'יוֹם שְׁבִיעִי · ז׳ בְּנִיסָן',
+  'יוֹם שְׁמִינִי · ח׳ בְּנִיסָן',
+  'יוֹם תְּשִׁיעִי · ט׳ בְּנִיסָן',
+  'יוֹם עֲשִׂירִי · י׳ בְּנִיסָן',
+  'יוֹם אַחַד עָשָׂר · י״א בְּנִיסָן',
+  'יוֹם שְׁנֵים עָשָׂר · י״ב בְּנִיסָן',
+  'יוֹם שְׁלֹשָׁה עָשָׂר · י״ג בְּנִיסָן'
+];
+
+var DLABEL_DE = [
+  'Erster Tag · א׳ בְּנִיסָן · Rosch Chodesch Nissan',
+  'Zweiter Tag · ב׳ בְּנִיסָן',
+  'Dritter Tag · ג׳ בְּנִיסָן',
+  'Vierter Tag · ד׳ בְּנִיסָן',
+  'Fünfter Tag · ה׳ בְּנִיסָן',
+  'Sechster Tag · ו׳ בְּנִיסָן',
+  'Siebter Tag · ז׳ בְּנִיסָן',
+  'Achter Tag · ח׳ בְּנִיסָן',
+  'Neunter Tag · ט׳ בְּנִיסָן',
+  'Zehnter Tag · י׳ בְּנִיסָן',
+  'Elfter Tag · י״א בְּנִיסָן',
+  'Zwölfter Tag · י״ב בְּנִיסָן',
+  'Dreizehnter Tag · י״ג בְּנִיסָן'
+];
 
 function getRead() {
   try { return JSON.parse(localStorage.getItem('nesiim-read') || '{}'); } catch(e) { return {}; }
@@ -460,24 +519,63 @@ function show(n) {
 }
 
 function setLang(l) {
-  // Update buttons
+  // Update lang buttons
   document.querySelectorAll('.lbtn').forEach(function(b) {
     b.classList.toggle('on', b.getAttribute('data-lang') === l);
   });
-  // Show/hide content by data-lang attribute
-  document.querySelectorAll('[data-lang="ru"]').forEach(function(el) {
-    if (!el.classList.contains('lbtn')) {
-      el.style.display = (l === 'ru') ? '' : 'none';
-    }
+  // Show/hide content by data-lang attribute (skip lang buttons themselves)
+  ['ru', 'de', 'he'].forEach(function(lang) {
+    document.querySelectorAll('[data-lang="' + lang + '"]').forEach(function(el) {
+      if (!el.classList.contains('lbtn')) {
+        el.style.display = (lang === l) ? '' : 'none';
+      }
+    });
   });
-  document.querySelectorAll('[data-lang="de"]').forEach(function(el) {
-    if (!el.classList.contains('lbtn')) {
-      el.style.display = (l === 'de') ? '' : 'none';
-    }
+  // Hebrew-only mode: apply/remove body class for CSS layout (single column)
+  document.body.classList.toggle('lang-he', l === 'he');
+  // Update day labels (dlabel)
+  var dlabels = l === 'he' ? DLABEL_HE : l === 'de' ? DLABEL_DE : DLABEL_RU;
+  document.querySelectorAll('.dlabel').forEach(function(el, i) {
+    if (i < dlabels.length) el.textContent = dlabels[i];
   });
+  // Update scripture references (.ref) — swap book name per language
+  document.querySelectorAll('.ref').forEach(function(el) {
+    var txt = el.textContent
+      .replace(/בְּמִדְבַּר|Bamidbar|Бемидбар/g, 'X');
+    var bookName = l === 'he' ? 'בְּמִדְבַּר' : l === 'de' ? 'Bamidbar' : 'Бемидбар';
+    el.textContent = txt.replace('X', bookName);
+  });
+  // Update read buttons
+  var readText = l === 'he' ? '✓ נקרא' : l === 'de' ? '✓ Gelesen' : '✓ Прочитано';
+  document.querySelectorAll('.read-btn').forEach(function(btn) {
+    btn.textContent = readText;
+  });
+  // Update reset button
+  var resetEl = document.querySelector('.reset-btn');
+  if (resetEl) resetEl.textContent = l === 'he' ? '↺ איפוס' : l === 'de' ? '↺ Reset' : '↺ Сброс';
+  // Update intro band label (exists only in day 1)
+  document.querySelectorAll('.intro-label').forEach(function(el) {
+    if (l === 'he') el.textContent = 'פסוקי פתיחה · נקראים ביום הראשון';
+    else if (l === 'de') el.textContent = 'Einleitungsverse · werden am ersten Tag gelesen';
+    else el.textContent = 'Вводные стихи · читаются в первый день';
+  });
+  // Update prayer box titles (.ptb)
+  document.querySelectorAll('.ptb').forEach(function(el) {
+    if (l === 'he') el.textContent = 'יְהִי רָצוֹן';
+    else if (l === 'de') el.textContent = 'יְהִי רָצוֹן — Gebet';
+    else el.textContent = 'יְהִי רָצוֹן — Молитва';
+  });
+  // Update column header for translation column
+  document.querySelectorAll('.col-h .ch:last-child').forEach(function(el) {
+    if (l === 'de') el.textContent = 'Übersetzung';
+    else el.textContent = 'Перевод';
+  });
+  // Re-apply read state (textContent was overwritten for read-btns)
+  updateReadUI();
 }
 
 (function() {
+  setLang('ru');
   updateReadUI();
   var nisan1 = new Date(2026, 2, 19);
   var diff = Math.floor((new Date() - nisan1) / 86400000) + 1;
