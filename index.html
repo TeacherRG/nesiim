@@ -427,6 +427,7 @@ body.lang-he .dlabel{direction:rtl}
   <span data-lang="de" style="display:none">נְשִׂיאִים · Bamidbar 7–8 · Nissan 5786 · Basierend auf dem Text von Chabad.org</span>
   <span data-lang="he" style="display:none">נְשִׂיאִים · בְּמִדְבַּר ז׳–ח׳ · נִיסָן תשפ״ו · מבוסס על טקסט Chabad.org</span>
   <br>© Clubchitas 5786 · <a href="mailto:kosherletter@gmail.com" style="color:var(--gold-l);text-decoration:none">kosherletter@gmail.com</a>
+  <br><span id="visit-counter"></span>
 </footer>
 <script>
 var TOTAL_DAYS = 13;
@@ -503,6 +504,19 @@ function toggleRead(n) {
 function resetProgress() {
   localStorage.removeItem('nesiim-read');
   updateReadUI();
+}
+
+function updateVisitCounter(lang) {
+  var el = document.getElementById('visit-counter');
+  if (!el) return;
+  var count = parseInt(localStorage.getItem('nesiim-visits') || '0', 10);
+  if (lang === 'he') {
+    el.textContent = 'מבקרים: ' + count;
+  } else if (lang === 'de') {
+    el.textContent = 'Besucher: ' + count;
+  } else {
+    el.textContent = 'Посетителей: ' + count;
+  }
 }
 
 function updateReadUI() {
@@ -598,9 +612,17 @@ function setLang(l) {
   });
   // Re-apply read state (textContent was overwritten for read-btns)
   updateReadUI();
+  // Update visitor counter label for current language
+  updateVisitCounter(l);
 }
 
 (function() {
+  // Increment visit count once per browser session
+  if (!sessionStorage.getItem('nesiim-visited')) {
+    sessionStorage.setItem('nesiim-visited', '1');
+    var visits = parseInt(localStorage.getItem('nesiim-visits') || '0', 10) + 1;
+    localStorage.setItem('nesiim-visits', String(visits));
+  }
   setLang('ru');
   updateReadUI();
   var nisan1 = new Date(2026, 2, 19);
