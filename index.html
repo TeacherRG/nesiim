@@ -10,7 +10,7 @@
 :root{--gold:#b8860b;--gold-l:#d4a843;--gold-ll:#f0dfa0;--parchment:#fdf8ee;--parchment-d:#f2e8cc;--ink:#18100a;--ink-mid:#3a2510;--ink-soft:#6b4a28;--red:#7a1c1c;--border:rgba(184,134,11,.3)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--parchment);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;min-height:100vh}
-header{text-align:center;padding:44px 24px 28px;background:linear-gradient(180deg,var(--parchment-d),var(--parchment));border-bottom:3px double var(--gold)}
+header{text-align:center;padding:44px 70px 28px 24px;background:linear-gradient(180deg,var(--parchment-d),var(--parchment));border-bottom:3px double var(--gold)}
 .orn{font-size:1.1rem;color:var(--gold-l);letter-spacing:.5em;display:block;margin-bottom:10px}
 h1.he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:900;color:var(--ink);line-height:1;direction:rtl}
 h1.ru{font-family:'Crimson Pro',serif;font-size:clamp(1rem,2.5vw,1.35rem);color:var(--ink-soft);letter-spacing:.25em;text-transform:uppercase;direction:ltr;margin-top:6px}
@@ -90,6 +90,45 @@ body.lang-he .dlabel{direction:rtl}
 .nb-dismiss{border:1px solid var(--border);background:none;cursor:pointer;padding:5px 14px;font-size:.82rem;color:var(--ink-soft);border-radius:2px;font-family:'Crimson Pro',serif;transition:all .18s}
 .nb-dismiss:hover{background:var(--gold-ll)}
 body.lang-he #notif-banner{direction:rtl}
+/* ===== TOP MENU ===== */
+.top-menu-wrap{position:fixed;top:14px;right:16px;z-index:500}
+.top-menu-btn{width:42px;height:42px;border:1px solid var(--gold);background:rgba(253,248,238,.95);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:all .2s;box-shadow:0 2px 14px rgba(0,0,0,.13)}
+.top-menu-btn span{display:block;width:18px;height:2px;background:var(--ink-soft);border-radius:1px;transition:transform .2s,opacity .2s}
+.top-menu-btn:hover,.top-menu-btn.on{background:var(--gold-ll);border-color:var(--gold-l)}
+.top-menu-btn.on span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.top-menu-btn.on span:nth-child(2){opacity:0;transform:scaleX(0)}
+.top-menu-btn.on span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.top-menu-panel{display:none;position:absolute;right:0;top:calc(100% + 8px);background:rgba(253,248,238,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--gold);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.18);min-width:210px;overflow:hidden}
+.top-menu-panel.open{display:block;animation:menuIn .18s ease}
+@keyframes menuIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.top-menu-item{display:flex;align-items:center;gap:12px;width:100%;border:none;background:none;cursor:pointer;padding:13px 18px;font-family:'Crimson Pro',serif;font-size:.95rem;color:var(--ink-mid);text-align:left;transition:background .15s;border-bottom:1px solid var(--border);direction:ltr}
+.top-menu-item:last-child{border-bottom:none}
+.top-menu-item:hover{background:var(--gold-ll);color:var(--ink)}
+.top-menu-item svg{width:17px;height:17px;flex-shrink:0;color:var(--gold)}
+#settings-panel{top:calc(100% + 8px)}
+/* ===== ABOUT MODAL ===== */
+.about-overlay{display:none;position:fixed;inset:0;background:rgba(24,16,10,.55);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:600;align-items:center;justify-content:center;padding:20px}
+.about-overlay.open{display:flex;animation:fadeOverlay .2s ease}
+@keyframes fadeOverlay{from{opacity:0}to{opacity:1}}
+.about-modal{background:var(--parchment);border:2px solid var(--gold);border-radius:16px;box-shadow:0 16px 56px rgba(0,0,0,.25);max-width:480px;width:100%;max-height:85vh;overflow-y:auto;position:relative;direction:ltr;animation:modalIn .22s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.about-close{position:absolute;top:14px;right:16px;border:none;background:none;cursor:pointer;font-size:1.1rem;color:var(--ink-soft);padding:4px 8px;border-radius:4px;transition:all .15s;line-height:1}
+.about-close:hover{background:var(--gold-ll);color:var(--ink)}
+.about-header{text-align:center;padding:28px 24px 18px;border-bottom:2px double var(--gold);background:linear-gradient(180deg,var(--parchment-d),var(--parchment))}
+.about-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:2.2rem;font-weight:900;color:var(--ink);direction:rtl;line-height:1}
+.about-ru{font-family:'Crimson Pro',serif;font-size:.9rem;color:var(--ink-soft);letter-spacing:.2em;text-transform:uppercase;margin-top:6px}
+.about-period{font-size:.82rem;color:var(--gold);margin-top:5px;font-style:italic}
+.about-body{padding:20px 24px 24px}
+.about-desc{font-size:.95rem;line-height:1.75;color:var(--ink-mid);margin-bottom:16px}
+.about-features{list-style:none;margin-bottom:18px}
+.about-features li{font-size:.88rem;line-height:1.7;color:var(--ink-mid);padding:3px 0 3px 1.2em;position:relative}
+.about-features li::before{content:'·';position:absolute;left:0;color:var(--gold);font-weight:700}
+.about-link-wrap{text-align:center;padding:12px 0 2px;border-top:1px solid var(--border)}
+.about-link{display:inline-block;color:var(--gold);font-size:.88rem;font-family:'Crimson Pro',serif;letter-spacing:.05em;text-decoration:none}
+.about-link:hover{text-decoration:underline}
+/* ===== TOAST ===== */
+.toast-msg{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(16px);background:var(--ink);color:var(--parchment);padding:10px 24px;border-radius:20px;font-family:'Crimson Pro',serif;font-size:.9rem;opacity:0;transition:opacity .25s,transform .25s;z-index:700;white-space:nowrap;pointer-events:none}
+.toast-msg.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 <body>
@@ -113,7 +152,31 @@ body.lang-he #notif-banner{direction:rtl}
 </div>
 
 <nav class="nav-wrap"><div class="nav-inner"><button class="nb  on" onclick="show(1)"><span class="n">א׳</span><span class="t" data-lang="ru">Иехуда<br>Нахшон</span><span class="t" data-lang="de" style="display:none">Juda<br>Nachschon</span><span class="t" data-lang="he" style="display:none">יְהוּדָה<br>נַחְשׁוֹן</span></button><button class="nb" onclick="show(2)"><span class="n">ב׳</span><span class="t" data-lang="ru">Иссахар<br>Нетанель</span><span class="t" data-lang="de" style="display:none">Issachar<br>Netanel</span><span class="t" data-lang="he" style="display:none">יִשָּׂשכָר<br>נְתַנְאֵל</span></button><button class="nb" onclick="show(3)"><span class="n">ג׳</span><span class="t" data-lang="ru">Звулун<br>Элиав</span><span class="t" data-lang="de" style="display:none">Sebulon<br>Eliav</span><span class="t" data-lang="he" style="display:none">זְבוּלֻן<br>אֱלִיאָב</span></button><button class="nb" onclick="show(4)"><span class="n">ד׳</span><span class="t" data-lang="ru">Реувен<br>Элицур</span><span class="t" data-lang="de" style="display:none">Ruben<br>Elitzur</span><span class="t" data-lang="he" style="display:none">רְאוּבֵן<br>אֱלִיצוּר</span></button><button class="nb" onclick="show(5)"><span class="n">ה׳</span><span class="t" data-lang="ru">Шимон<br>Шлумиэль</span><span class="t" data-lang="de" style="display:none">Schimeon<br>Schelumiel</span><span class="t" data-lang="he" style="display:none">שִׁמְעוֹן<br>שְׁלֻמִיאֵל</span></button><button class="nb" onclick="show(6)"><span class="n">ו׳</span><span class="t" data-lang="ru">Гад<br>Эльясаф</span><span class="t" data-lang="de" style="display:none">Gad<br>Eljasaf</span><span class="t" data-lang="he" style="display:none">גָּד<br>אֶלְיָסָף</span></button><button class="nb" onclick="show(7)"><span class="n">ז׳</span><span class="t" data-lang="ru">Эфраим<br>Элишама</span><span class="t" data-lang="de" style="display:none">Efraim<br>Elischama</span><span class="t" data-lang="he" style="display:none">אֶפְרַיִם<br>אֱלִישָׁמָע</span></button><button class="nb" onclick="show(8)"><span class="n">ח׳</span><span class="t" data-lang="ru">Менаше<br>Гамлиэль</span><span class="t" data-lang="de" style="display:none">Menasche<br>Gamliel</span><span class="t" data-lang="he" style="display:none">מְנַשֶּׁה<br>גַּמְלִיאֵל</span></button><button class="nb" onclick="show(9)"><span class="n">ט׳</span><span class="t" data-lang="ru">Биньямин<br>Авидан</span><span class="t" data-lang="de" style="display:none">Benjamin<br>Avidan</span><span class="t" data-lang="he" style="display:none">בִּנְיָמִן<br>אֲבִידָן</span></button><button class="nb" onclick="show(10)"><span class="n">י׳</span><span class="t" data-lang="ru">Дан<br>Ахиэзер</span><span class="t" data-lang="de" style="display:none">Dan<br>Achiʿeser</span><span class="t" data-lang="he" style="display:none">דָּן<br>אֲחִיעֶזֶר</span></button><button class="nb" onclick="show(11)"><span class="n">י״א</span><span class="t" data-lang="ru">Ашер<br>Пагиэль</span><span class="t" data-lang="de" style="display:none">Ascher<br>Pagʿiel</span><span class="t" data-lang="he" style="display:none">אָשֵׁר<br>פַּגְעִיאֵל</span></button><button class="nb" onclick="show(12)"><span class="n">י״ב</span><span class="t" data-lang="ru">Нафтали<br>Ахира</span><span class="t" data-lang="de" style="display:none">Naftali<br>Achira</span><span class="t" data-lang="he" style="display:none">נַפְתָּלִי<br>אֲחִירַע</span></button><button class="nb" onclick="show(13)"><span class="n">י״ג</span><span class="t" data-lang="ru">Итог<br>Менора</span><span class="t" data-lang="de" style="display:none">Gesamt<br>Menora</span><span class="t" data-lang="he" style="display:none">סִיכּוּם<br>מְנוֹרָה</span></button></div></nav>
-<div class="lang-bar"><div class="settings-wrap"><button class="settings-btn" id="settings-btn" onclick="toggleSettings(event)" title="Настройки">⚙</button><div class="settings-panel" id="settings-panel"><div class="settings-group"><label id="lang-label">Язык</label><select id="lang-sel" onchange="setLang(this.value)"><option value="ru">Русский</option><option value="de">Deutsch</option><option value="he">עברית</option></select></div><div class="settings-group"><label>Размер шрифта <span id="fs-val">100%</span></label><input type="range" id="fs-slider" min="80" max="150" value="100" step="5" oninput="applyFontSize(this.value)"></div><div class="settings-group"><label id="font-label">Вид шрифта</label><select id="font-sel" onchange="applyFont(this.value)"><option value="crimson">Crimson Pro</option><option value="noto">Noto Serif Hebrew</option><option value="georgia">Georgia</option><option value="arial">Arial</option><option value="stam">Stam Ashkenaz CLM</option><option value="frank">Frank Ruhl Libre</option></select></div></div></div></div>
+<!-- Top-right dropdown menu (fixed) -->
+<div class="top-menu-wrap" id="top-menu-wrap">
+  <button class="top-menu-btn" id="top-menu-btn" onclick="toggleTopMenu(event)" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="top-menu-panel" id="top-menu-panel">
+    <button class="top-menu-item" onclick="openAbout(event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      <span>О проекте</span>
+    </button>
+    <button class="top-menu-item" onclick="toggleSettingsFromMenu(event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      <span>Настройки</span>
+    </button>
+    <button class="top-menu-item" onclick="shareProject(event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <span>Поделиться</span>
+    </button>
+  </div>
+  <div class="settings-panel" id="settings-panel">
+    <div class="settings-group"><label id="lang-label">Язык</label><select id="lang-sel" onchange="setLang(this.value)"><option value="ru">Русский</option><option value="de">Deutsch</option><option value="he">עברית</option></select></div>
+    <div class="settings-group"><label>Размер шрифта <span id="fs-val">100%</span></label><input type="range" id="fs-slider" min="80" max="150" value="100" step="5" oninput="applyFontSize(this.value)"></div>
+    <div class="settings-group"><label id="font-label">Вид шрифта</label><select id="font-sel" onchange="applyFont(this.value)"><option value="crimson">Crimson Pro</option><option value="noto">Noto Serif Hebrew</option><option value="georgia">Georgia</option><option value="arial">Arial</option><option value="stam">Stam Ashkenaz CLM</option><option value="frank">Frank Ruhl Libre</option></select></div>
+  </div>
+</div>
 <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><span class="prog-label" id="prog-label">0 / 13</span><button class="reset-btn" onclick="resetProgress()" title="Сбросить прогресс">↺ Сброс</button></div>
 <div class="day on" id="d1">
  <div class="day-head">
@@ -679,20 +742,77 @@ var FONTS = {
   arial: "Arial, Helvetica, sans-serif"
 };
 
-function toggleSettings(e) {
+function toggleTopMenu(e) {
   e.stopPropagation();
-  var panel = document.getElementById('settings-panel');
-  var btn = document.getElementById('settings-btn');
+  var panel = document.getElementById('top-menu-panel');
+  var btn = document.getElementById('top-menu-btn');
+  var settings = document.getElementById('settings-panel');
   var isOpen = panel.classList.contains('open');
   panel.classList.toggle('open', !isOpen);
   btn.classList.toggle('on', !isOpen);
+  if (!isOpen) settings.classList.remove('open');
+}
+
+function toggleSettingsFromMenu(e) {
+  e.stopPropagation();
+  document.getElementById('top-menu-panel').classList.remove('open');
+  document.getElementById('top-menu-btn').classList.remove('on');
+  document.getElementById('settings-panel').classList.toggle('open');
+}
+
+function openAbout(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('top-menu-panel').classList.remove('open');
+  document.getElementById('top-menu-btn').classList.remove('on');
+  document.getElementById('about-overlay').classList.add('open');
+}
+
+function closeAbout() {
+  document.getElementById('about-overlay').classList.remove('open');
+}
+
+function shareProject(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('top-menu-panel').classList.remove('open');
+  document.getElementById('top-menu-btn').classList.remove('on');
+  var url = 'https://nesiim.mychitas.app';
+  var title = 'נְשִׂיאִים — Несиим';
+  var text = 'Платформа для ежедневного чтения приношений двенадцати вождей в Нисан';
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(function() {});
+  } else {
+    navigator.clipboard.writeText(url).then(function() {
+      showToast('Ссылка скопирована');
+    }).catch(function() {
+      prompt('Скопируйте ссылку:', url);
+    });
+  }
+}
+
+function showToast(msg) {
+  var toast = document.createElement('div');
+  toast.className = 'toast-msg';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(function() { toast.classList.add('show'); }, 10);
+  setTimeout(function() { toast.classList.remove('show'); setTimeout(function() { toast.remove(); }, 300); }, 2500);
 }
 
 document.addEventListener('click', function(e) {
-  var wrap = document.querySelector('.settings-wrap');
+  var wrap = document.getElementById('top-menu-wrap');
   if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('top-menu-panel').classList.remove('open');
+    document.getElementById('top-menu-btn').classList.remove('on');
     document.getElementById('settings-panel').classList.remove('open');
-    document.getElementById('settings-btn').classList.remove('on');
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeAbout();
+    document.getElementById('top-menu-panel').classList.remove('open');
+    document.getElementById('top-menu-btn').classList.remove('on');
+    document.getElementById('settings-panel').classList.remove('open');
   }
 });
 
@@ -751,6 +871,32 @@ function applyFont(val) {
   } catch(e) {}
 })();
 </script>
+<!-- About modal -->
+<div class="about-overlay" id="about-overlay" onclick="closeAbout()">
+  <div class="about-modal" onclick="event.stopPropagation()">
+    <button class="about-close" onclick="closeAbout()">✕</button>
+    <div class="about-header">
+      <div class="about-he">נְשִׂיאִים</div>
+      <div class="about-ru">Несиим · Нисан</div>
+      <div class="about-period">Нисан 5786 · 19–31 марта 2026 г.</div>
+    </div>
+    <div class="about-body">
+      <p class="about-desc">Интерактивная платформа для изучения Торы, посвящённая приношениям двенадцати вождей колен Израилевых при освящении Скинии (Бемидбар 7–8). Каждый день Нисана — новый вождь, одно и то же приношение, но неповторимое намерение.</p>
+      <ul class="about-features">
+        <li>13-дневный план чтения: 12 вождей + итоговый день</li>
+        <li>Три языка: русский, немецкий, иврит</li>
+        <li>Параллельные тексты: оригинал на иврите рядом с переводом</li>
+        <li>Отслеживание прогресса с прогресс-баром (0/13)</li>
+        <li>Push-уведомления каждое утро в 10:00, кроме субботы</li>
+        <li>Молитва «יְהִי רָצוֹן» для каждого из 12 дней</li>
+        <li>Настройка шрифта (6 вариантов) и размера текста (80–150%)</li>
+      </ul>
+      <div class="about-link-wrap">
+        <a class="about-link" href="https://nesiim.mychitas.app" target="_blank" rel="noopener">nesiim.mychitas.app</a>
+      </div>
+    </div>
+  </div>
+</div>
 <script type="module">
 import { shouldShowBanner, dismissBanner, requestAndSchedule, initNotifications } from '/notifications.js';
 
