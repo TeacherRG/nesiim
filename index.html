@@ -419,9 +419,19 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 </footer>
 <script>
 var TOTAL_DAYS = 13;
+var activeDay = 1;
 
 function getRead() {
   try { return JSON.parse(localStorage.getItem('nesiim-read') || '{}'); } catch(e) { return {}; }
+}
+
+function setRead(n) {
+  var r = getRead();
+  if (!r[n]) {
+    r[n] = true;
+    localStorage.setItem('nesiim-read', JSON.stringify(r));
+    updateReadUI();
+  }
 }
 
 function toggleRead(n) {
@@ -443,7 +453,10 @@ function updateReadUI() {
     var done = !!r[i];
     if (done) cnt++;
     var btn = document.getElementById('rb' + i);
-    if (btn) btn.classList.toggle('done', done);
+    if (btn) {
+      btn.classList.toggle('done', done);
+      btn.textContent = done ? '✓ Прочитано' : '○ Не прочитано';
+    }
     var nb = document.querySelectorAll('.nb')[i - 1];
     if (nb) nb.classList.toggle('read', done);
   }
@@ -451,11 +464,24 @@ function updateReadUI() {
   document.getElementById('prog-label').textContent = cnt + ' / ' + TOTAL_DAYS;
 }
 
+function checkScrollRead() {
+  var r = getRead();
+  if (r[activeDay]) return;
+  var scrolled = window.scrollY + window.innerHeight;
+  var total = document.documentElement.scrollHeight;
+  if (total - scrolled <= 100) {
+    setRead(activeDay);
+  }
+}
+
+window.addEventListener('scroll', checkScrollRead, { passive: true });
+
 function show(n) {
   document.querySelectorAll('.day').forEach(function(d){ d.classList.remove('on'); });
   document.querySelectorAll('.nb').forEach(function(b){ b.classList.remove('on'); });
   document.getElementById('d' + n).classList.add('on');
   document.querySelectorAll('.nb')[n - 1].classList.add('on');
+  activeDay = n;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -482,6 +508,7 @@ function setLang(l) {
   var nisan1 = new Date(2026, 2, 19);
   var diff = Math.floor((new Date() - nisan1) / 86400000) + 1;
   if (diff >= 1 && diff <= 13) show(diff);
+  setTimeout(checkScrollRead, 100);
 })();
 </script>
 </body>
