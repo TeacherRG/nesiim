@@ -66,6 +66,18 @@ body.lang-he .col-h{grid-template-columns:1fr}
 body.lang-he .ch:last-child{display:none}
 body.lang-he .hc{border-left:none}
 body.lang-he .dlabel{direction:rtl}
+.lang-bar{position:relative}
+.settings-wrap{position:relative;display:inline-block;margin-left:auto}
+.settings-btn{border:1px solid var(--gold);background:none;cursor:pointer;padding:5px 12px;font-size:.88rem;color:var(--ink-soft);border-radius:2px;font-family:'Crimson Pro',serif;transition:all .18s;line-height:1}
+.settings-btn:hover,.settings-btn.on{background:var(--gold-ll);color:var(--ink)}
+.settings-panel{display:none;position:absolute;right:0;top:calc(100% + 6px);background:var(--parchment);border:1px solid var(--gold);border-radius:4px;box-shadow:0 4px 18px rgba(0,0,0,.18);padding:16px 18px;min-width:220px;z-index:300;direction:ltr}
+.settings-panel.open{display:block}
+.settings-group{margin-bottom:14px}
+.settings-group:last-child{margin-bottom:0}
+.settings-group label{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;color:var(--ink-soft);margin-bottom:5px;font-family:'Crimson Pro',serif}
+.settings-group label span{font-size:.75rem;color:var(--gold);font-weight:600}
+.settings-group input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer}
+.settings-group select{width:100%;border:1px solid var(--gold);background:var(--parchment);color:var(--ink);font-family:'Crimson Pro',serif;padding:4px 8px;border-radius:2px;font-size:.85rem;cursor:pointer}
 </style>
 </head>
 <body>
@@ -77,7 +89,7 @@ body.lang-he .dlabel{direction:rtl}
   <h1 class="ru" data-lang="he" style="display:none">נְשִׂיאִים · נִיסָן</h1>
 </header>
 <nav class="nav-wrap"><div class="nav-inner"><button class="nb  on" onclick="show(1)"><span class="n">א׳</span><span class="t" data-lang="ru">Иехуда<br>Нахшон</span><span class="t" data-lang="de" style="display:none">Juda<br>Nachschon</span><span class="t" data-lang="he" style="display:none">יְהוּדָה<br>נַחְשׁוֹן</span></button><button class="nb" onclick="show(2)"><span class="n">ב׳</span><span class="t" data-lang="ru">Иссахар<br>Нетанель</span><span class="t" data-lang="de" style="display:none">Issachar<br>Netanel</span><span class="t" data-lang="he" style="display:none">יִשָּׂשכָר<br>נְתַנְאֵל</span></button><button class="nb" onclick="show(3)"><span class="n">ג׳</span><span class="t" data-lang="ru">Звулун<br>Элиав</span><span class="t" data-lang="de" style="display:none">Sebulon<br>Eliav</span><span class="t" data-lang="he" style="display:none">זְבוּלֻן<br>אֱלִיאָב</span></button><button class="nb" onclick="show(4)"><span class="n">ד׳</span><span class="t" data-lang="ru">Реувен<br>Элицур</span><span class="t" data-lang="de" style="display:none">Ruben<br>Elitzur</span><span class="t" data-lang="he" style="display:none">רְאוּבֵן<br>אֱלִיצוּר</span></button><button class="nb" onclick="show(5)"><span class="n">ה׳</span><span class="t" data-lang="ru">Шимон<br>Шлумиэль</span><span class="t" data-lang="de" style="display:none">Schimeon<br>Schelumiel</span><span class="t" data-lang="he" style="display:none">שִׁמְעוֹן<br>שְׁלֻמִיאֵל</span></button><button class="nb" onclick="show(6)"><span class="n">ו׳</span><span class="t" data-lang="ru">Гад<br>Эльясаф</span><span class="t" data-lang="de" style="display:none">Gad<br>Eljasaf</span><span class="t" data-lang="he" style="display:none">גָּד<br>אֶלְיָסָף</span></button><button class="nb" onclick="show(7)"><span class="n">ז׳</span><span class="t" data-lang="ru">Эфраим<br>Элишама</span><span class="t" data-lang="de" style="display:none">Efraim<br>Elischama</span><span class="t" data-lang="he" style="display:none">אֶפְרַיִם<br>אֱלִישָׁמָע</span></button><button class="nb" onclick="show(8)"><span class="n">ח׳</span><span class="t" data-lang="ru">Менаше<br>Гамлиэль</span><span class="t" data-lang="de" style="display:none">Menasche<br>Gamliel</span><span class="t" data-lang="he" style="display:none">מְנַשֶּׁה<br>גַּמְלִיאֵל</span></button><button class="nb" onclick="show(9)"><span class="n">ט׳</span><span class="t" data-lang="ru">Биньямин<br>Авидан</span><span class="t" data-lang="de" style="display:none">Benjamin<br>Avidan</span><span class="t" data-lang="he" style="display:none">בִּנְיָמִן<br>אֲבִידָן</span></button><button class="nb" onclick="show(10)"><span class="n">י׳</span><span class="t" data-lang="ru">Дан<br>Ахиэзер</span><span class="t" data-lang="de" style="display:none">Dan<br>Achiʿeser</span><span class="t" data-lang="he" style="display:none">דָּן<br>אֲחִיעֶזֶר</span></button><button class="nb" onclick="show(11)"><span class="n">י״א</span><span class="t" data-lang="ru">Ашер<br>Пагиэль</span><span class="t" data-lang="de" style="display:none">Ascher<br>Pagʿiel</span><span class="t" data-lang="he" style="display:none">אָשֵׁר<br>פַּגְעִיאֵל</span></button><button class="nb" onclick="show(12)"><span class="n">י״ב</span><span class="t" data-lang="ru">Нафтали<br>Ахира</span><span class="t" data-lang="de" style="display:none">Naftali<br>Achira</span><span class="t" data-lang="he" style="display:none">נַפְתָּלִי<br>אֲחִירַע</span></button><button class="nb" onclick="show(13)"><span class="n">י״ג</span><span class="t" data-lang="ru">Итог<br>Менора</span><span class="t" data-lang="de" style="display:none">Gesamt<br>Menora</span><span class="t" data-lang="he" style="display:none">סִיכּוּם<br>מְנוֹרָה</span></button></div></nav>
-<div class="lang-bar"><button class="lbtn on" data-lang="ru" onclick="setLang('ru')">Русский</button><button class="lbtn" data-lang="de" onclick="setLang('de')">Deutsch</button><button class="lbtn" data-lang="he" onclick="setLang('he')">עברית</button></div>
+<div class="lang-bar"><button class="lbtn on" data-lang="ru" onclick="setLang('ru')">Русский</button><button class="lbtn" data-lang="de" onclick="setLang('de')">Deutsch</button><button class="lbtn" data-lang="he" onclick="setLang('he')">עברית</button><div class="settings-wrap"><button class="settings-btn" id="settings-btn" onclick="toggleSettings(event)" title="Настройки">⚙</button><div class="settings-panel" id="settings-panel"><div class="settings-group"><label>Размер шрифта <span id="fs-val">100%</span></label><input type="range" id="fs-slider" min="80" max="150" value="100" step="5" oninput="applyFontSize(this.value)"></div><div class="settings-group"><label>Вид шрифта</label><select id="font-sel" onchange="applyFont(this.value)"><option value="crimson">Crimson Pro</option><option value="georgia">Georgia</option><option value="arial">Arial</option><option value="frank">Frank Ruhl Libre</option></select></div></div></div></div>
 <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><span class="prog-label" id="prog-label">0 / 13</span><button class="reset-btn" onclick="resetProgress()" title="Сбросить прогресс">↺ Сброс</button></div>
 <div class="day on" id="d1">
  <div class="day-head">
@@ -613,6 +625,48 @@ function setLang(l) {
   updateVisitCounter(l);
 }
 
+var BASE_FONT_SIZE_PX = 16;
+
+var FONTS = {
+  crimson: "'Crimson Pro', Georgia, serif",
+  frank: "'Frank Ruhl Libre', serif",
+  georgia: "Georgia, 'Times New Roman', serif",
+  arial: "Arial, Helvetica, sans-serif"
+};
+
+function toggleSettings(e) {
+  e.stopPropagation();
+  var panel = document.getElementById('settings-panel');
+  var btn = document.getElementById('settings-btn');
+  var isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('on', !isOpen);
+}
+
+document.addEventListener('click', function(e) {
+  var wrap = document.querySelector('.settings-wrap');
+  if (wrap && !wrap.contains(e.target)) {
+    document.getElementById('settings-panel').classList.remove('open');
+    document.getElementById('settings-btn').classList.remove('on');
+  }
+});
+
+function applyFontSize(val) {
+  document.getElementById('fs-val').textContent = val + '%';
+  document.getElementById('fs-slider').value = val;
+  document.documentElement.style.fontSize = (val / 100 * BASE_FONT_SIZE_PX) + 'px';
+  try { localStorage.setItem('nesiim-fs', val); } catch(e) {}
+}
+
+function applyFont(val) {
+  var fontFamily = FONTS[val] || FONTS.crimson;
+  document.body.style.fontFamily = fontFamily;
+  document.querySelectorAll('.rc, .pru').forEach(function(el) {
+    el.style.fontFamily = fontFamily;
+  });
+  try { localStorage.setItem('nesiim-font', val); } catch(e) {}
+}
+
 (function() {
   // Increment visit count once per browser session
   if (!sessionStorage.getItem('nesiim-visited')) {
@@ -626,6 +680,16 @@ function setLang(l) {
   var diff = Math.floor((new Date() - nisan1) / 86400000) + 1;
   if (diff >= 1 && diff <= 13) show(diff);
   setTimeout(checkScrollRead, 100);
+  // Restore saved settings
+  try {
+    var savedFs = localStorage.getItem('nesiim-fs');
+    if (savedFs) applyFontSize(savedFs);
+    var savedFont = localStorage.getItem('nesiim-font');
+    if (savedFont) {
+      document.getElementById('font-sel').value = savedFont;
+      applyFont(savedFont);
+    }
+  } catch(e) {}
 })();
 </script>
 </body>
