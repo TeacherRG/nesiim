@@ -50,6 +50,15 @@ h1.ru{font-family:'Crimson Pro',serif;font-size:clamp(1rem,2.5vw,1.35rem);color:
 .note13{text-align:center;padding:18px 20px 10px;font-style:italic;color:var(--ink-soft);font-size:.92rem;border-top:1px dashed var(--border);margin-top:10px}
 footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft);opacity:.6;direction:ltr;font-style:italic;border-top:1px solid var(--border);margin-top:30px}
 @media(max-width:580px){.vr,.col-h{grid-template-columns:1fr}.hc{border-left:none;border-bottom:1px solid var(--gold-ll)}.ch:last-child{display:none}.pi{padding:16px}}
+.prog-wrap{padding:8px 16px;background:var(--parchment-d);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.prog-bar{flex:1;height:8px;background:rgba(184,134,11,.2);border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;background:var(--gold);border-radius:4px;transition:width .35s}
+.prog-label{font-size:.78rem;color:var(--ink-soft);white-space:nowrap;direction:ltr}
+.reset-btn{border:1px solid var(--border);background:none;cursor:pointer;padding:3px 10px;font-size:.75rem;color:var(--ink-soft);border-radius:2px;font-family:'Crimson Pro',serif;transition:all .18s}
+.reset-btn:hover{background:var(--gold-ll);color:var(--ink)}
+.read-btn{display:inline-flex;align-items:center;gap:5px;margin-top:10px;border:1px solid var(--gold);background:none;cursor:pointer;padding:5px 16px;font-size:.82rem;color:var(--ink-soft);border-radius:2px;font-family:'Crimson Pro',serif;transition:all .25s}
+.read-btn:hover{background:var(--gold-ll)}.read-btn.done{background:var(--gold-ll);color:var(--gold);border-color:var(--gold);font-weight:600}
+.nb.read .n{position:relative}.nb.read .n::after{content:'✓';font-size:.55rem;color:var(--gold);vertical-align:super;margin-left:1px}
 </style>
 </head>
 <body>
@@ -63,6 +72,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 </header>
 <nav class="nav-wrap"><div class="nav-inner"><button class="nb  on" onclick="show(1)"><span class="n">א׳</span><span class="t" data-lang="ru">Иехуда<br>Нахшон</span><span class="t" data-lang="de" style="display:none">Juda<br>Nachschon</span></button><button class="nb" onclick="show(2)"><span class="n">ב׳</span><span class="t" data-lang="ru">Иссахар<br>Нетанель</span><span class="t" data-lang="de" style="display:none">Issachar<br>Netanel</span></button><button class="nb" onclick="show(3)"><span class="n">ג׳</span><span class="t" data-lang="ru">Звулун<br>Элиав</span><span class="t" data-lang="de" style="display:none">Sebulon<br>Eliav</span></button><button class="nb" onclick="show(4)"><span class="n">ד׳</span><span class="t" data-lang="ru">Реувен<br>Элицур</span><span class="t" data-lang="de" style="display:none">Ruben<br>Elitzur</span></button><button class="nb" onclick="show(5)"><span class="n">ה׳</span><span class="t" data-lang="ru">Шимон<br>Шлумиэль</span><span class="t" data-lang="de" style="display:none">Schimeon<br>Schelumiel</span></button><button class="nb" onclick="show(6)"><span class="n">ו׳</span><span class="t" data-lang="ru">Гад<br>Эльясаф</span><span class="t" data-lang="de" style="display:none">Gad<br>Eljasaf</span></button><button class="nb" onclick="show(7)"><span class="n">ז׳</span><span class="t" data-lang="ru">Эфраим<br>Элишама</span><span class="t" data-lang="de" style="display:none">Efraim<br>Elischama</span></button><button class="nb" onclick="show(8)"><span class="n">ח׳</span><span class="t" data-lang="ru">Менаше<br>Гамлиэль</span><span class="t" data-lang="de" style="display:none">Menasche<br>Gamliel</span></button><button class="nb" onclick="show(9)"><span class="n">ט׳</span><span class="t" data-lang="ru">Биньямин<br>Авидан</span><span class="t" data-lang="de" style="display:none">Benjamin<br>Avidan</span></button><button class="nb" onclick="show(10)"><span class="n">י׳</span><span class="t" data-lang="ru">Дан<br>Ахиэзер</span><span class="t" data-lang="de" style="display:none">Dan<br>Achiʿeser</span></button><button class="nb" onclick="show(11)"><span class="n">י״א</span><span class="t" data-lang="ru">Ашер<br>Пагиэль</span><span class="t" data-lang="de" style="display:none">Ascher<br>Pagʿiel</span></button><button class="nb" onclick="show(12)"><span class="n">י״ב</span><span class="t" data-lang="ru">Нафтали<br>Ахира</span><span class="t" data-lang="de" style="display:none">Naftali<br>Achira</span></button><button class="nb" onclick="show(13)"><span class="n">י״ג</span><span class="t" data-lang="ru">Итог<br>Менора</span><span class="t" data-lang="de" style="display:none">Gesamt<br>Menora</span></button></div></nav>
 <div class="lang-bar"><button class="lbtn on" data-lang="ru" onclick="setLang('ru')">Русский</button><button class="lbtn" data-lang="de" onclick="setLang('de')">Deutsch</button></div>
+<div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><span class="prog-label" id="prog-label">0 / 13</span><button class="reset-btn" onclick="resetProgress()" title="Сбросить прогресс">↺ Сброс</button></div>
 <div class="day on" id="d1">
  <div class="day-head">
   <div class="dlabel">День первый · א׳ בְּנִיסָן · ראש חודש ניסן</div>
@@ -70,6 +80,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Нахшон сын Аминадава — колено Иехуды</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Nachschon ben Aminadav — Stamm Juda</div>
   <span class="ref">Бемидбар 7:1–17</span>
+  <button class="read-btn" id="rb1" onclick="toggleRead(1)">✓ Прочитано</button>
  </div>
  <div class="intro-band">
   <div class="intro-label">Вводные стихи · читаются в первый день</div>
@@ -109,6 +120,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Нетанель сын Цуара — колено Иссахара</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Netanel ben Zuʿar — Stamm Issachar</div>
   <span class="ref">Бемидбар 7:18–23</span>
+  <button class="read-btn" id="rb2" onclick="toggleRead(2)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">יח</span>בַּיּוֹם֙ הַשֵּׁנִ֔י הִקְרִ֖יב נְתַנְאֵ֣ל בֶּן־צוּעָ֑ר נְשִׂ֖יא יִשָּׂשכָֽר:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">יח</span>В день второй принёс Нетанель сын Цуара, глава Иссахара.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">יח</span>Am zweiten Tag brachte Netanel ben Zuʿar, Fürst von Issachar, sein Opfer dar.</div></div></div>
@@ -133,6 +145,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Элиав сын Хелона — колено Звулуна</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Eliav ben Chelon — Stamm Sebulon</div>
   <span class="ref">Бемидбар 7:24–29</span>
+  <button class="read-btn" id="rb3" onclick="toggleRead(3)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">כד</span>בַּיּוֹם֙ הַשְּׁלִישִׁ֔י נָשִׂ֖יא לִבְנֵ֣י זְבוּלֻ֑ן אֱלִיאָ֖ב בֶּן־חֵלֹֽן:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">כד</span>В день третий — глава сынов Звулуна Элиав сын Хелона.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">כד</span>Am dritten Tag: der Fürst der Söhne Sebulons, Eliav ben Chelon.</div></div></div>
@@ -157,6 +170,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Элицур сын Шедейура — колено Реувена</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Elitzur ben Schedeʿur — Stamm Ruben</div>
   <span class="ref">Бемидбар 7:30–35</span>
+  <button class="read-btn" id="rb4" onclick="toggleRead(4)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">ל</span>בַּיּוֹם֙ הָֽרְבִיעִ֔י נָשִׂ֖יא לִבְנֵ֣י רְאוּבֵ֑ן אֱלִיצ֖וּר בֶּן־שְׁדֵיאֽוּר:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">ל</span>В день четвёртый — глава сынов Реувена Элицур сын Шедейура.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">ל</span>Am vierten Tag: der Fürst der Söhne Rubens, Elitzur ben Schedeʿur.</div></div></div>
@@ -181,6 +195,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Шлумиэль сын Цуришадая — колено Шимона</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Schelumiel ben Zurishadai — Stamm Schimeon</div>
   <span class="ref">Бемидбар 7:36–41</span>
+  <button class="read-btn" id="rb5" onclick="toggleRead(5)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">לו</span>בַּיּוֹם֙ הַֽחֲמִישִׁ֔י נָשִׂ֖יא לִבְנֵ֣י שִׁמְע֑וֹן שְׁלֻֽמִיאֵ֖ל בֶּן־צוּרִֽישַׁדָּֽי:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">לו</span>В день пятый — глава сынов Шимона Шлумиэль сын Цуришадая.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">לו</span>Am fünften Tag: der Fürst der Söhne Schimeons, Schelumiel ben Zurishadai.</div></div></div>
@@ -205,6 +220,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Эльясаф сын Деуэля — колено Гада</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Eljasaf ben Deʿuel — Stamm Gad</div>
   <span class="ref">Бемидбар 7:42–47</span>
+  <button class="read-btn" id="rb6" onclick="toggleRead(6)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">מב</span>בַּיּוֹם֙ הַשִּׁשִּׁ֔י נָשִׂ֖יא לִבְנֵ֣י גָ֑ד אֶלְיָסָ֖ף בֶּן־דְּעוּאֵֽל:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">מב</span>В день шестой — глава сынов Гада Эльясаф сын Деуэля.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">מב</span>Am sechsten Tag: der Fürst der Söhne Gads, Eljasaf ben Deʿuel.</div></div></div>
@@ -229,6 +245,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Элишама сын Амихуда — колено Эфраима</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Elischama ben Ammihud — Stamm Efraim</div>
   <span class="ref">Бемидбар 7:48–53</span>
+  <button class="read-btn" id="rb7" onclick="toggleRead(7)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">מח</span>בַּיּוֹם֙ הַשְּׁבִיעִ֔י נָשִׂ֖יא לִבְנֵ֣י אֶפְרָ֑יִם אֱלִֽישָׁמָ֖ע בֶּן־עַמִּיהֽוּד:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">מח</span>В день седьмой — глава сынов Эфраима Элишама сын Амихуда.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">מח</span>Am siebten Tag: der Fürst der Söhne Efraims, Elischama ben Ammihud.</div></div></div>
@@ -253,6 +270,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Гамлиэль сын Педацура — колено Менаше</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Gamliel ben Pedazur — Stamm Menasche</div>
   <span class="ref">Бемидбар 7:54–59</span>
+  <button class="read-btn" id="rb8" onclick="toggleRead(8)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">נד</span>בַּיּוֹם֙ הַשְּׁמִינִ֔י נָשִׂ֖יא לִבְנֵ֣י מְנַשֶּׁ֑ה גַּמְלִיאֵ֖ל בֶּן־פְּדָהצֽוּר:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">נד</span>В день восьмой — глава сынов Менаше Гамлиэль сын Педацура.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">נד</span>Am achten Tag: der Fürst der Söhne Menasches, Gamliel ben Pedazur.</div></div></div>
@@ -277,6 +295,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Авидан сын Гидони — колено Биньямина</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Avidan ben Gidʿoni — Stamm Benjamin</div>
   <span class="ref">Бемидбар 7:60–65</span>
+  <button class="read-btn" id="rb9" onclick="toggleRead(9)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">ס</span>בַּיּוֹם֙ הַתְּשִׁיעִ֔י נָשִׂ֖יא לִבְנֵ֣י בִנְיָמִ֑ן אֲבִידָ֖ן בֶּן־גִּדְעֹנִֽי:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">ס</span>В день девятый — глава сынов Биньямина Авидан сын Гидони.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">ס</span>Am neunten Tag: der Fürst der Söhne Benjamins, Avidan ben Gidʿoni.</div></div></div>
@@ -301,6 +320,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Ахиэзер сын Амишадая — колено Дана</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Achiʿeser ben Ammischadai — Stamm Dan</div>
   <span class="ref">Бемидбар 7:66–71</span>
+  <button class="read-btn" id="rb10" onclick="toggleRead(10)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">סו</span>בַּיּוֹם֙ הָֽעֲשִׂירִ֔י נָשִׂ֖יא לִבְנֵ֣י דָ֑ן אֲחִיעֶ֖זֶר בֶּן־עַמִּֽישַׁדָּֽי:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">סו</span>В день десятый — глава сынов Дана Ахиэзер сын Амишадая.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">סו</span>Am zehnten Tag: der Fürst der Söhne Dans, Achiʿeser ben Ammischadai.</div></div></div>
@@ -325,6 +345,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Пагиэль сын Охрана — колено Ашера</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Pagʿiel ben Ochran — Stamm Ascher</div>
   <span class="ref">Бемидбар 7:72–77</span>
+  <button class="read-btn" id="rb11" onclick="toggleRead(11)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">עב</span>בְּיוֹם֙ עַשְׁתֵּ֣י עָשָׂ֣ר י֔וֹם נָשִׂ֖יא לִבְנֵ֣י אָשֵׁ֑ר פַּגְעִיאֵ֖ל בֶּן־עָכְרָֽן:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">עב</span>В день одиннадцатый — глава сынов Ашера Пагиэль сын Охрана.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">עב</span>Am elften Tag: der Fürst der Söhne Aschers, Pagʿiel ben Ochran.</div></div></div>
@@ -349,6 +370,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Ахира сын Эйнана — колено Нафтали</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Achira ben Ejnan — Stamm Naftali</div>
   <span class="ref">Бемидбар 7:78–83</span>
+  <button class="read-btn" id="rb12" onclick="toggleRead(12)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">עח</span>בְּיוֹם֙ שְׁנֵ֣ים עָשָׂ֣ר י֔וֹם נָשִׂ֖יא לִבְנֵ֣י נַפְתָּלִ֑י אֲחִירַ֖ע בֶּן־עֵינָֽן:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">עח</span>В день двенадцатый — глава сынов Нафтали Ахира сын Эйнана.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">עח</span>Am zwölften Tag: der Fürst der Söhne Naftalis, Achira ben Ejnan.</div></div></div>
@@ -373,6 +395,7 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <div class="dru lang-ru" data-lang="ru">Итог всех жертв · Зажжение Меноры (колено Леви)</div>
   <div class="dru lang-de" data-lang="de" style="display:none">Zusammenfassung der Opfer · Anzünden der Menora (Stamm Levi)</div>
   <span class="ref">Бемидбар 7:84–89 · 8:1–4</span>
+  <button class="read-btn" id="rb13" onclick="toggleRead(13)">✓ Прочитано</button>
  </div>
  <div class="col-h"><div class="ch">עִבְרִית</div><div class="ch">Перевод / Übersetzung</div></div>
 <div class="vr"><div class="hc"><span class="vn">פד</span>זֹ֣את | חֲנֻכַּ֣ת הַמִּזְבֵּ֗חַ בְּיוֹם֙ הִמָּשַׁ֣ח אֹת֔וֹ מֵאֵ֖ת נְשִׂיאֵ֣י יִשְׂרָאֵ֑ל קַֽעֲר֨וֹת כֶּ֜סֶף שְׁתֵּ֣ים עֶשְׂרֵ֗ה מִזְרְקֵי־כֶ֙סֶף֙ שְׁנֵ֣ים עָשָׂ֔ר כַּפּ֥וֹת זָהָ֖ב שְׁתֵּ֥ים עֶשְׂרֵֽה:</div><div class="rc-wrap"><div class="rc lang-ru" data-lang="ru"><span class="vn">פד</span>Вот обновление жертвенника в день помазания его от глав Израиля: двенадцать серебряных блюд, двенадцать серебряных чаш, двенадцать золотых ложек.</div><div class="rc lang-de" data-lang="de" style="display:none"><span class="vn">פד</span>Dies ist die Einweihung des Altars am Tag seiner Salbung durch die Fürsten Israels: zwölf silberne Schalen, zwölf silberne Schüsseln, zwölf goldene Löffel.</div></div></div>
@@ -395,6 +418,39 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
   <br>© Clubchitas 5786 · <a href="mailto:kosherletter@gmail.com" style="color:var(--gold-l);text-decoration:none">kosherletter@gmail.com</a>
 </footer>
 <script>
+var TOTAL_DAYS = 13;
+
+function getRead() {
+  try { return JSON.parse(localStorage.getItem('nesiim-read') || '{}'); } catch(e) { return {}; }
+}
+
+function toggleRead(n) {
+  var r = getRead();
+  r[n] = !r[n];
+  localStorage.setItem('nesiim-read', JSON.stringify(r));
+  updateReadUI();
+}
+
+function resetProgress() {
+  localStorage.removeItem('nesiim-read');
+  updateReadUI();
+}
+
+function updateReadUI() {
+  var r = getRead();
+  var cnt = 0;
+  for (var i = 1; i <= TOTAL_DAYS; i++) {
+    var done = !!r[i];
+    if (done) cnt++;
+    var btn = document.getElementById('rb' + i);
+    if (btn) btn.classList.toggle('done', done);
+    var nb = document.querySelectorAll('.nb')[i - 1];
+    if (nb) nb.classList.toggle('read', done);
+  }
+  document.getElementById('prog-fill').style.width = (cnt / TOTAL_DAYS * 100) + '%';
+  document.getElementById('prog-label').textContent = cnt + ' / ' + TOTAL_DAYS;
+}
+
 function show(n) {
   document.querySelectorAll('.day').forEach(function(d){ d.classList.remove('on'); });
   document.querySelectorAll('.nb').forEach(function(b){ b.classList.remove('on'); });
@@ -422,6 +478,7 @@ function setLang(l) {
 }
 
 (function() {
+  updateReadUI();
   var nisan1 = new Date(2026, 2, 19);
   var diff = Math.floor((new Date() - nisan1) / 86400000) + 1;
   if (diff >= 1 && diff <= 13) show(diff);
