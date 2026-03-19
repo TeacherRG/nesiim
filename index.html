@@ -79,6 +79,17 @@ body.lang-he .dlabel{direction:rtl}
 .settings-group label span{font-size:.75rem;color:var(--gold);font-weight:600}
 .settings-group input[type=range]{width:100%;accent-color:var(--gold);cursor:pointer}
 .settings-group select{width:100%;border:1px solid var(--gold);background:var(--parchment);color:var(--ink);font-family:'Crimson Pro',serif;padding:4px 8px;border-radius:2px;font-size:.85rem;cursor:pointer}
+/* Notification consent banner */
+#notif-banner{display:none;background:var(--parchment-d);border-bottom:2px solid var(--gold);padding:12px 20px;direction:ltr}
+#notif-banner.visible{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+#notif-banner .nb-text{flex:1;min-width:180px;font-size:.88rem;color:var(--ink-mid);font-family:'Crimson Pro',serif;line-height:1.45}
+#notif-banner .nb-text b{color:var(--ink);font-weight:600}
+.nb-actions{display:flex;gap:8px;flex-shrink:0}
+.nb-allow{border:1px solid var(--gold);background:var(--gold-ll);cursor:pointer;padding:5px 18px;font-size:.85rem;color:var(--ink);border-radius:2px;font-family:'Crimson Pro',serif;font-weight:600;transition:all .18s}
+.nb-allow:hover{background:var(--gold);color:#fff}
+.nb-dismiss{border:1px solid var(--border);background:none;cursor:pointer;padding:5px 14px;font-size:.82rem;color:var(--ink-soft);border-radius:2px;font-family:'Crimson Pro',serif;transition:all .18s}
+.nb-dismiss:hover{background:var(--gold-ll)}
+body.lang-he #notif-banner{direction:rtl}
 </style>
 </head>
 <body>
@@ -89,6 +100,18 @@ body.lang-he .dlabel{direction:rtl}
   <h1 class="ru" data-lang="de" style="display:none">Nesiim · Nissan</h1>
   <h1 class="ru" data-lang="he" style="display:none">נְשִׂיאִים · נִיסָן</h1>
 </header>
+
+<!-- Notification consent banner (shown only if permission not yet decided) -->
+<div id="notif-banner" role="region" aria-label="Уведомления">
+  <span class="nb-text" id="notif-banner-text">
+    <b>Напоминания о чтении</b> — разрешить сайту отправлять уведомление каждое утро в 10:00, кроме субботы?
+  </span>
+  <div class="nb-actions">
+    <button class="nb-allow" id="notif-allow-btn" onclick="notifAllow()">Разрешить</button>
+    <button class="nb-dismiss" id="notif-dismiss-btn" onclick="notifDismiss()">Нет, спасибо</button>
+  </div>
+</div>
+
 <nav class="nav-wrap"><div class="nav-inner"><button class="nb  on" onclick="show(1)"><span class="n">א׳</span><span class="t" data-lang="ru">Иехуда<br>Нахшон</span><span class="t" data-lang="de" style="display:none">Juda<br>Nachschon</span><span class="t" data-lang="he" style="display:none">יְהוּדָה<br>נַחְשׁוֹן</span></button><button class="nb" onclick="show(2)"><span class="n">ב׳</span><span class="t" data-lang="ru">Иссахар<br>Нетанель</span><span class="t" data-lang="de" style="display:none">Issachar<br>Netanel</span><span class="t" data-lang="he" style="display:none">יִשָּׂשכָר<br>נְתַנְאֵל</span></button><button class="nb" onclick="show(3)"><span class="n">ג׳</span><span class="t" data-lang="ru">Звулун<br>Элиав</span><span class="t" data-lang="de" style="display:none">Sebulon<br>Eliav</span><span class="t" data-lang="he" style="display:none">זְבוּלֻן<br>אֱלִיאָב</span></button><button class="nb" onclick="show(4)"><span class="n">ד׳</span><span class="t" data-lang="ru">Реувен<br>Элицур</span><span class="t" data-lang="de" style="display:none">Ruben<br>Elitzur</span><span class="t" data-lang="he" style="display:none">רְאוּבֵן<br>אֱלִיצוּר</span></button><button class="nb" onclick="show(5)"><span class="n">ה׳</span><span class="t" data-lang="ru">Шимон<br>Шлумиэль</span><span class="t" data-lang="de" style="display:none">Schimeon<br>Schelumiel</span><span class="t" data-lang="he" style="display:none">שִׁמְעוֹן<br>שְׁלֻמִיאֵל</span></button><button class="nb" onclick="show(6)"><span class="n">ו׳</span><span class="t" data-lang="ru">Гад<br>Эльясаф</span><span class="t" data-lang="de" style="display:none">Gad<br>Eljasaf</span><span class="t" data-lang="he" style="display:none">גָּד<br>אֶלְיָסָף</span></button><button class="nb" onclick="show(7)"><span class="n">ז׳</span><span class="t" data-lang="ru">Эфраим<br>Элишама</span><span class="t" data-lang="de" style="display:none">Efraim<br>Elischama</span><span class="t" data-lang="he" style="display:none">אֶפְרַיִם<br>אֱלִישָׁמָע</span></button><button class="nb" onclick="show(8)"><span class="n">ח׳</span><span class="t" data-lang="ru">Менаше<br>Гамлиэль</span><span class="t" data-lang="de" style="display:none">Menasche<br>Gamliel</span><span class="t" data-lang="he" style="display:none">מְנַשֶּׁה<br>גַּמְלִיאֵל</span></button><button class="nb" onclick="show(9)"><span class="n">ט׳</span><span class="t" data-lang="ru">Биньямин<br>Авидан</span><span class="t" data-lang="de" style="display:none">Benjamin<br>Avidan</span><span class="t" data-lang="he" style="display:none">בִּנְיָמִן<br>אֲבִידָן</span></button><button class="nb" onclick="show(10)"><span class="n">י׳</span><span class="t" data-lang="ru">Дан<br>Ахиэзер</span><span class="t" data-lang="de" style="display:none">Dan<br>Achiʿeser</span><span class="t" data-lang="he" style="display:none">דָּן<br>אֲחִיעֶזֶר</span></button><button class="nb" onclick="show(11)"><span class="n">י״א</span><span class="t" data-lang="ru">Ашер<br>Пагиэль</span><span class="t" data-lang="de" style="display:none">Ascher<br>Pagʿiel</span><span class="t" data-lang="he" style="display:none">אָשֵׁר<br>פַּגְעִיאֵל</span></button><button class="nb" onclick="show(12)"><span class="n">י״ב</span><span class="t" data-lang="ru">Нафтали<br>Ахира</span><span class="t" data-lang="de" style="display:none">Naftali<br>Achira</span><span class="t" data-lang="he" style="display:none">נַפְתָּלִי<br>אֲחִירַע</span></button><button class="nb" onclick="show(13)"><span class="n">י״ג</span><span class="t" data-lang="ru">Итог<br>Менора</span><span class="t" data-lang="de" style="display:none">Gesamt<br>Menora</span><span class="t" data-lang="he" style="display:none">סִיכּוּם<br>מְנוֹרָה</span></button></div></nav>
 <div class="lang-bar"><div class="settings-wrap"><button class="settings-btn" id="settings-btn" onclick="toggleSettings(event)" title="Настройки">⚙</button><div class="settings-panel" id="settings-panel"><div class="settings-group"><label id="lang-label">Язык</label><select id="lang-sel" onchange="setLang(this.value)"><option value="ru">Русский</option><option value="de">Deutsch</option><option value="he">עברית</option></select></div><div class="settings-group"><label>Размер шрифта <span id="fs-val">100%</span></label><input type="range" id="fs-slider" min="80" max="150" value="100" step="5" oninput="applyFontSize(this.value)"></div><div class="settings-group"><label id="font-label">Вид шрифта</label><select id="font-sel" onchange="applyFont(this.value)"><option value="crimson">Crimson Pro</option><option value="noto">Noto Serif Hebrew</option><option value="georgia">Georgia</option><option value="arial">Arial</option><option value="stam">Stam Ashkenaz CLM</option><option value="frank">Frank Ruhl Libre</option></select></div></div></div></div>
 <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div><span class="prog-label" id="prog-label">0 / 13</span><button class="reset-btn" onclick="resetProgress()" title="Сбросить прогресс">↺ Сброс</button></div>
@@ -625,6 +648,8 @@ function setLang(l) {
   updateReadUI();
   // Update visitor counter label for current language
   updateVisitCounter(l);
+  // Update notification banner text if visible
+  if (window._updateNotifBannerLang) window._updateNotifBannerLang(l);
   // Sync language select in settings panel
   var langSel = document.getElementById('lang-sel');
   if (langSel) langSel.value = l;
@@ -724,6 +749,59 @@ function applyFont(val) {
       applyFont(savedFont);
     }
   } catch(e) {}
+})();
+</script>
+<script type="module">
+import { shouldShowBanner, dismissBanner, requestAndSchedule, initNotifications } from '/notifications.js';
+
+// Banner text per language
+var BANNER_TEXTS = {
+  ru: '<b>Напоминания о чтении</b> — разрешить сайту отправлять уведомление каждое утро в 10:00, кроме субботы?',
+  de: '<b>Leseerinnerungen</b> — Darf die Seite jeden Morgen um 10 Uhr (außer Samstag) eine Benachrichtigung senden?',
+  he: '<b>תזכורות קריאה</b> — לאפשר לאתר לשלוח התראה כל בוקר בשעה 10:00, מלבד שבת?'
+};
+var ALLOW_TEXTS = { ru: 'Разрешить', de: 'Erlauben', he: 'אפשר' };
+var DISMISS_TEXTS = { ru: 'Нет, спасибо', de: 'Nein danke', he: 'לא, תודה' };
+
+function getCurrentLang() {
+  var btn = document.querySelector('.lbtn.on');
+  return btn ? btn.getAttribute('data-lang') : 'ru';
+}
+
+// Update banner text when language switches
+window._updateNotifBannerLang = function(lang) {
+  var banner = document.getElementById('notif-banner');
+  if (!banner || !banner.classList.contains('visible')) return;
+  document.getElementById('notif-banner-text').innerHTML = BANNER_TEXTS[lang] || BANNER_TEXTS.ru;
+  document.getElementById('notif-allow-btn').textContent = ALLOW_TEXTS[lang] || ALLOW_TEXTS.ru;
+  document.getElementById('notif-dismiss-btn').textContent = DISMISS_TEXTS[lang] || DISMISS_TEXTS.ru;
+};
+
+window.notifAllow = async function() {
+  var lang = getCurrentLang();
+  document.getElementById('notif-banner').classList.remove('visible');
+  var granted = await requestAndSchedule(lang);
+  if (!granted) {
+    // Browser denied — nothing more to do
+  }
+};
+
+window.notifDismiss = function() {
+  dismissBanner();
+  document.getElementById('notif-banner').classList.remove('visible');
+};
+
+// On load: show banner if needed, or re-schedule if already granted
+(async function() {
+  var lang = getCurrentLang();
+  if (shouldShowBanner()) {
+    var banner = document.getElementById('notif-banner');
+    document.getElementById('notif-banner-text').innerHTML = BANNER_TEXTS[lang] || BANNER_TEXTS.ru;
+    document.getElementById('notif-allow-btn').textContent = ALLOW_TEXTS[lang] || ALLOW_TEXTS.ru;
+    document.getElementById('notif-dismiss-btn').textContent = DISMISS_TEXTS[lang] || DISMISS_TEXTS.ru;
+    banner.classList.add('visible');
+  }
+  await initNotifications(lang);
 })();
 </script>
 </body>
