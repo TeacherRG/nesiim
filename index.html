@@ -160,15 +160,15 @@ body.lang-he #notif-banner{direction:rtl}
   <div class="top-menu-panel" id="top-menu-panel">
     <button class="top-menu-item" onclick="openAbout(event)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      <span>О проекте</span>
+      <span id="menu-about">О проекте</span>
     </button>
     <button class="top-menu-item" onclick="toggleSettingsFromMenu(event)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-      <span>Настройки</span>
+      <span id="menu-settings">Настройки</span>
     </button>
     <button class="top-menu-item" onclick="shareProject(event)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-      <span>Поделиться</span>
+      <span id="menu-share">Поделиться</span>
     </button>
   </div>
   <div class="settings-panel" id="settings-panel">
@@ -727,6 +727,13 @@ function setLang(l) {
     var fsText = l === 'he' ? 'גודל גופן' : l === 'de' ? 'Schriftgröße' : 'Размер шрифта';
     fsLabel.innerHTML = fsText + ' <span id="fs-val">' + (fsSpan ? fsSpan.textContent : '100%') + '</span>';
   }
+  // Update top menu labels
+  var menuAbout = document.getElementById('menu-about');
+  if (menuAbout) menuAbout.textContent = l === 'he' ? 'על הפרויקט' : l === 'de' ? 'Über das Projekt' : 'О проекте';
+  var menuSettings = document.getElementById('menu-settings');
+  if (menuSettings) menuSettings.textContent = l === 'he' ? 'הגדרות' : l === 'de' ? 'Einstellungen' : 'Настройки';
+  var menuShare = document.getElementById('menu-share');
+  if (menuShare) menuShare.textContent = l === 'he' ? 'שיתוף' : l === 'de' ? 'Teilen' : 'Поделиться';
   // Save language preference
   try { localStorage.setItem('nesiim-lang', l); } catch(e) {}
 }
@@ -881,7 +888,7 @@ function applyFont(val) {
       <div class="about-period">Нисан 5786 · 19–31 марта 2026 г.</div>
     </div>
     <div class="about-body">
-      <p class="about-desc">Интерактивная платформа для изучения Торы, посвящённая приношениям двенадцати вождей колен Израилевых при освящении Скинии (Бемидбар 7–8). Каждый день Нисана — новый вождь, одно и то же приношение, но неповторимое намерение.</p>
+      <p class="about-desc">Интерактивная платформа для изучения Торы, посвящённая приношениям двенадцати несиим колен Израиля при освящении Мишкана (Бемидбар 7–8). Каждый день Нисана — новый наси, одно и то же приношение, но неповторимое намерение.</p>
       <ul class="about-features">
         <li>13-дневный план чтения: 12 вождей + итоговый день</li>
         <li>Три языка: русский, немецкий, иврит</li>
