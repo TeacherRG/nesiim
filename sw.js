@@ -9,11 +9,14 @@ self.addEventListener('activate', e => e.waitUntil(clients.claim()));
 // Receive scheduling message from main thread
 self.addEventListener('message', e => {
   if (!e.data || e.data.type !== 'SCHEDULE') return;
-  const delay = e.data.delay;
-  const lang = e.data.lang || 'ru';
+  const { delay, lang = 'ru', activeEnd = 0 } = e.data;
   if (typeof delay !== 'number' || delay < 0) return;
 
   setTimeout(() => {
+    const now = Date.now();
+    // Do not fire if we are past the active window
+    if (activeEnd && now > activeEnd) return;
+
     const titles = {
       ru: 'Несиим — ежедневное чтение',
       de: 'Nesiim — tägliche Lektüre',
