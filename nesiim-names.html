@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Значения имён несиим — Духовный путь</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Hebrew:wght@400;700;900&family=Frank+Ruhl+Libre:wght@400;700;900&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#b8860b;--gold-l:#d4a843;--gold-ll:#f0dfa0;
+  --parchment:#fdf8ee;--parchment-d:#f2e8cc;
+  --ink:#18100a;--ink-mid:#3a2510;--ink-soft:#6b4a28;
+  --red:#7a1c1c;--border:rgba(184,134,11,.3);
+  --blue-tribe:#2a4a7f;--green-tribe:#2a6b3a;--purple-tribe:#5a2a7a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--parchment);color:var(--ink);font-family:'Crimson Pro',Georgia,serif;min-height:100vh}
+
+/* ── Header ── */
+header{text-align:center;padding:48px 80px 32px 24px;background:linear-gradient(180deg,var(--parchment-d),var(--parchment));border-bottom:3px double var(--gold)}
+.orn{font-size:1rem;color:var(--gold-l);letter-spacing:.6em;display:block;margin-bottom:12px}
+.header-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:var(--ink);line-height:1.2;direction:rtl;margin-bottom:6px}
+.header-ru{font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--ink-soft);letter-spacing:.15em;text-transform:uppercase;margin-top:4px}
+.header-sub{font-size:.88rem;color:var(--ink-soft);font-style:italic;margin-top:10px;opacity:.8;max-width:680px;margin-inline:auto;line-height:1.6}
+
+/* ── Back button ── */
+.back-btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gold);background:none;cursor:pointer;padding:7px 18px;font-size:.9rem;color:var(--ink-soft);border-radius:3px;font-family:'Crimson Pro',serif;transition:all .18s;text-decoration:none;margin:0 auto;position:absolute;left:20px;top:50%;transform:translateY(-50%)}
+.back-btn:hover{background:var(--gold-ll);color:var(--ink)}
+header{position:relative}
+
+/* ── Intro banner ── */
+.intro-banner{background:linear-gradient(135deg,var(--parchment-d) 60%,#e8d8b0);border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);padding:28px 24px;text-align:center;max-width:860px;margin:28px auto;border-radius:4px;box-shadow:0 2px 18px rgba(184,134,11,.1)}
+.intro-banner .year-tag{display:inline-block;background:var(--gold-ll);border:1px solid var(--gold);border-radius:20px;padding:4px 18px;font-size:.78rem;letter-spacing:.2em;color:var(--gold);margin-bottom:14px;text-transform:uppercase}
+.intro-banner p{font-size:1.05rem;color:var(--ink-mid);line-height:1.85;direction:ltr}
+.intro-banner .sig{margin-top:16px;font-style:italic;color:var(--ink-soft);font-size:.92rem;border-top:1px dashed var(--border);padding-top:12px}
+
+/* ── Main layout ── */
+main{max-width:960px;margin:0 auto;padding:0 16px 60px}
+
+/* ── Section divider ── */
+.section-divider{text-align:center;margin:40px 0 28px;position:relative}
+.section-divider::before{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:var(--border)}
+.section-divider span{position:relative;background:var(--parchment);padding:0 18px;font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+
+/* ── Tribe cards ── */
+.tribe-card{border:2px solid;border-radius:8px;margin-bottom:36px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);transition:box-shadow .2s}
+.tribe-card:hover{box-shadow:0 8px 36px rgba(0,0,0,.13)}
+.tribe-card.yehuda{border-color:#b8860b;--tribe-color:#b8860b;--tribe-bg:#fff9ec;--tribe-accent:#7a1c1c}
+.tribe-card.issachar{border-color:#2a6b3a;--tribe-color:#2a6b3a;--tribe-bg:#f0f7f2;--tribe-accent:#1a4a28}
+.tribe-card.zvulun{border-color:#5a2a7a;--tribe-color:#5a2a7a;--tribe-bg:#f5f0f9;--tribe-accent:#3a1a5a}
+
+/* card header */
+.tribe-header{padding:22px 28px;background:var(--tribe-bg);border-bottom:2px solid var(--border);display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.tribe-number{width:52px;height:52px;border-radius:50%;background:var(--tribe-color);color:#fff;font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1.4rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.tribe-title{flex:1}
+.tribe-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:var(--tribe-color);direction:rtl;line-height:1.1}
+.tribe-ru{font-size:1.1rem;color:var(--ink-mid);margin-top:3px;font-weight:600}
+.tribe-tagline{font-size:.85rem;color:var(--ink-soft);font-style:italic;margin-top:2px}
+.tribe-symbol{font-size:2.6rem;flex-shrink:0}
+
+/* card body */
+.tribe-body{padding:24px 28px;background:#fff}
+
+/* name sub-sections */
+.name-section{margin-bottom:24px;padding:20px 22px;border-left:4px solid var(--tribe-color);background:var(--tribe-bg);border-radius:0 6px 6px 0}
+.name-section:last-child{margin-bottom:0}
+.name-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.name-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1.6rem;font-weight:900;color:var(--tribe-color);direction:rtl}
+.name-ru{font-size:1.15rem;font-weight:600;color:var(--tribe-accent);letter-spacing:.03em}
+.name-meaning{display:inline-block;background:var(--gold-ll);border:1px solid var(--gold);border-radius:12px;padding:2px 12px;font-size:.75rem;color:var(--gold);font-style:italic}
+.name-text{font-size:1rem;color:var(--ink-mid);line-height:1.85;direction:ltr}
+.name-text b{color:var(--tribe-accent);font-weight:700}
+.quote-block{margin:12px 0;padding:14px 18px;background:rgba(255,255,255,.8);border-left:3px solid var(--gold);border-radius:0 4px 4px 0;font-style:italic;color:var(--ink-mid);font-size:.97rem;line-height:1.8}
+.quote-block::before{content:'❝ ';color:var(--gold);font-style:normal}
+
+/* ── Conclusion ── */
+.conclusion{max-width:860px;margin:48px auto 0;padding:30px 32px;background:linear-gradient(135deg,var(--parchment-d),#f5e9c8);border:2px solid var(--gold);border-radius:8px;text-align:center;box-shadow:0 4px 24px rgba(184,134,11,.12)}
+.conclusion .title{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1.2rem;font-weight:900;color:var(--red);direction:rtl;margin-bottom:16px}
+.conclusion .blessing{font-size:1.1rem;color:var(--ink-mid);line-height:1.95;direction:ltr;font-style:italic}
+.conclusion .blessing b{color:var(--ink);font-weight:700;font-style:normal}
+.conclusion .sig2{margin-top:18px;color:var(--gold);font-size:.85rem;letter-spacing:.15em;text-transform:uppercase}
+
+/* ── Connection diagram ── */
+.diagram{max-width:860px;margin:36px auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center}
+.diag-item{padding:20px 14px;border-radius:8px;border:1px solid var(--border)}
+.diag-item.y{background:#fff9ec;border-color:#b8860b}
+.diag-item.i{background:#f0f7f2;border-color:#2a6b3a}
+.diag-item.z{background:#f5f0f9;border-color:#5a2a7a}
+.diag-icon{font-size:2.2rem;margin-bottom:10px;display:block}
+.diag-tribe{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1.1rem;font-weight:900;color:var(--ink);direction:rtl}
+.diag-theme{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin:6px 0}
+.diag-item.y .diag-theme{color:#b8860b}
+.diag-item.i .diag-theme{color:#2a6b3a}
+.diag-item.z .diag-theme{color:#5a2a7a}
+.diag-desc{font-size:.82rem;color:var(--ink-soft);line-height:1.6;font-style:italic}
+.diag-arrow{display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--gold);grid-column:1/-1;margin:-4px 0}
+
+/* ── Footer ── */
+footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft);opacity:.6;direction:ltr;font-style:italic;border-top:1px solid var(--border);margin-top:30px}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .tribe-header{flex-direction:column;align-items:flex-start;gap:12px}
+  .tribe-body{padding:16px}
+  .name-section{padding:14px 16px}
+  .diagram{grid-template-columns:1fr}
+  .diag-arrow{display:none}
+  .conclusion{padding:20px 18px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="back-btn" href="index.html">← Назад</a>
+  <span class="orn">✦ &nbsp; &nbsp; ✦ &nbsp; &nbsp; ✦</span>
+  <div class="header-he">שְׁמוֹת הַנְּשִׂיאִים — פְּנִימִיּוּת</div>
+  <div class="header-ru">Значения имён Несиим</div>
+  <div class="header-sub">Духовный путь еврея через имена вождей трёх восточных колен — Йеґуды, Иссахара и Зевулуна</div>
+</header>
+
+<!-- Intro -->
+<div class="intro-banner">
+  <div class="year-tag">Нисан · תרצז · Париж</div>
+  <p>
+    В начале месяца Нисан года <b>Тарцаз (תרצז)</b>, находясь в Париже, Ребе составил подробные записи, в которых раскрыл внутреннюю суть Мишкана и духовное значение имён несиим трёх колен, располагавшихся на <b>восточной стороне стана</b>: Йеґуды, Иссахара и Зевулуна. Эти записи он отправил за железный занавес своему отцу, праведнику <b>рабби Леви Ицхаку</b>.
+  </p>
+  <p class="sig">Спустя месяц, в начале Ияра, рабби Леви Ицхак прислал ответное письмо на десяти страницах, где с позиции Каббалы подтвердил и ещё глубже раскрыл эти великие идеи.</p>
+</div>
+
+<!-- Diagram -->
+<div class="diagram">
+  <div class="diag-item y">
+    <span class="diag-icon">🙏</span>
+    <div class="diag-tribe">יְהוּדָה</div>
+    <div class="diag-theme">Молитва</div>
+    <div class="diag-desc">Благодарение Творцу<br>Сила Тфилы</div>
+  </div>
+  <div class="diag-item i">
+    <span class="diag-icon">📜</span>
+    <div class="diag-tribe">יִשָּׂשכָר</div>
+    <div class="diag-theme">Тора</div>
+    <div class="diag-desc">Понимание и мудрость<br>«Знающие бину»</div>
+  </div>
+  <div class="diag-item z">
+    <span class="diag-icon">⚓</span>
+    <div class="diag-tribe">זְבוּלֻן</div>
+    <div class="diag-theme">Цдака</div>
+    <div class="diag-desc">Освящение будничного<br>Братская любовь</div>
+  </div>
+</div>
+
+<main>
+
+<div class="section-divider"><span>Три колена — три пути служения</span></div>
+
+<!-- ═══ YEHUDA ═══ -->
+<div class="tribe-card yehuda">
+  <div class="tribe-header">
+    <div class="tribe-number">א</div>
+    <div class="tribe-title">
+      <div class="tribe-he">שֵׁבֶט יְהוּדָה — נַחְשׁוֹן בֶּן עַמִּינָדָב</div>
+      <div class="tribe-ru">Колено Йеґуды · Нахшон сын Аминадава</div>
+      <div class="tribe-tagline">Путь молитвы и благодарения Творцу</div>
+    </div>
+    <div class="tribe-symbol">🙏</div>
+  </div>
+  <div class="tribe-body">
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">יְהוּדָה</span>
+        <span class="name-ru">Йеґуда</span>
+        <span class="name-meaning">«Ходаа» — Благодарение</span>
+      </div>
+      <p class="name-text">
+        Само имя <b>Йеґуда</b> происходит от слова «ходаа» — благодарение Творцу, и это есть истинная суть молитвы. Колено Иеґуды символизирует служение в <b>Молитве (Тфила)</b>.
+      </p>
+    </div>
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">עַמִּינָדָב</span>
+        <span class="name-ru">Аминадав</span>
+        <span class="name-meaning">«Надава» — Добровольное пожертвование</span>
+      </div>
+      <p class="name-text">
+        <b>Аминадав</b> означает «надава» — добровольное пожертвование, даяние цдаки. Как учили наши мудрецы: чтобы предстать перед Всевышним, сначала нужно дать цдаку.
+      </p>
+      <div class="quote-block">
+        Рабби Элазар всегда сначала давал мелкую монету (пруту) бедняку, и лишь после этого приступал к молитве.
+      </div>
+      <p class="name-text">
+        Рабби Леви Ицхак в своём письме назвал этот порядок — <b>цдака перед молитвой</b> — «хорошим и прекрасным».
+      </p>
+    </div>
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">נַחְשׁוֹן</span>
+        <span class="name-ru">Нахшон</span>
+        <span class="name-meaning">«Нахшоль» — Волны · «Нахаш» — Змея</span>
+      </div>
+      <p class="name-text">
+        Имя <b>Нахшон</b> связано с самопожертвованием (месирут нефеш) и полным аннулированием своего «я» (битуль) перед Богом во время молитвы. Он был назван так, потому что первым прыгнул в бурные волны <b>(нахшоль)</b> Красного моря.
+      </p>
+      <p class="name-text" style="margin-top:10px">
+        Кроме того, имя Нахшон напоминает слово <b>«нахаш»</b> (змея) — отсылка к известному закону Галахи о полной концентрации в молитве:
+      </p>
+      <div class="quote-block">
+        «Даже если змея обовьётся вокруг его пятки, он не должен прерывать свою молитву»
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ ISSACHAR ═══ -->
+<div class="tribe-card issachar">
+  <div class="tribe-header">
+    <div class="tribe-number">ב</div>
+    <div class="tribe-title">
+      <div class="tribe-he">שֵׁבֶט יִשָּׂשכָר — נְתַנְאֵל בֶּן צוּעָר</div>
+      <div class="tribe-ru">Колено Иссахара · Нетанэль сын Цуара</div>
+      <div class="tribe-tagline">Путь постижения Торы через смирение</div>
+    </div>
+    <div class="tribe-symbol">📜</div>
+  </div>
+  <div class="tribe-body">
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">יִשָּׂשכָר</span>
+        <span class="name-ru">Иссахар</span>
+        <span class="name-meaning">«Знающие бину» — Понимание</span>
+      </div>
+      <p class="name-text">
+        Если Йеґуда — это молитва, то <b>Иссахар — это изучение Торы</b>, ведь сказано о них: «из сынов Иссахара, знающие бину (понимание)». Моше Рабейну благословил их словами: «Иссахар в шатрах твоих» — то есть в шатрах Торы.
+      </p>
+    </div>
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">צוּעָר</span>
+        <span class="name-ru">Цуар</span>
+        <span class="name-meaning">«Цаар» — Страдание · «Катан» — Малый</span>
+      </div>
+      <p class="name-text">
+        <b>Цуар</b> происходит от слов «цаар» (страдание) и «катан» (малый), что указывает на <b>смирение</b>. Подобно горе Синай, которая была самой низкой из гор, человек должен умалить себя, прежде чем удостоится Торы.
+      </p>
+      <div class="quote-block">
+        «И да будет душа моя как прах пред всеми» — и лишь затем просим: «открой сердце моё для Торы Твоей».
+      </div>
+      <p class="name-text">
+        Рабби Леви Ицхак добавил к этому известное правило:
+      </p>
+      <div class="quote-block">
+        «Таков путь Торы... и в лишениях (цаар) живи»
+      </div>
+    </div>
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">נְתַנְאֵל</span>
+        <span class="name-ru">Нетанэль</span>
+        <span class="name-meaning">«Натан» — Подарок · «Эль» — Наследие от Бога</span>
+      </div>
+      <p class="name-text">
+        После смирения (Цуара) приходит <b>Нетанэль</b> («Дал Бог») — Тора, дарованная Всевышним. Рабби Леви Ицхак объясняет, что <b>Тора даётся нам двумя путями</b>: как подарок и как наследство.
+      </p>
+      <p class="name-text" style="margin-top:10px">
+        Слово <b>«Натан»</b> символизирует подарок, а окончание <b>«Эль»</b> намекает на слова из Писания «Нахалиэль» (наследие от Бога).
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ ZVULUN ═══ -->
+<div class="tribe-card zvulun">
+  <div class="tribe-header">
+    <div class="tribe-number">ג</div>
+    <div class="tribe-title">
+      <div class="tribe-he">שֵׁבֶט זְבוּלֻן — אֱלִיאָב בֶּן חֵלֹן</div>
+      <div class="tribe-ru">Колено Зевулуна · Элиав сын Хелона</div>
+      <div class="tribe-tagline">Освящение будничного и братская любовь</div>
+    </div>
+    <div class="tribe-symbol">⚓</div>
+  </div>
+  <div class="tribe-body">
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">זְבוּלֻן</span>
+        <span class="name-ru">Зевулун</span>
+        <span class="name-meaning">«У берега морей» — Торговля и цдака</span>
+      </div>
+      <p class="name-text">
+        Колено Зевулуна получило благословение на успешную торговлю: «Зевулун у берега морей расположится», и его предназначение — <b>давать цдаку</b> из своих доходов.
+      </p>
+    </div>
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">חֵלֹן</span>
+        <span class="name-ru">Хелон</span>
+        <span class="name-meaning">«Холь» — Будничное, Песок</span>
+      </div>
+      <p class="name-text">
+        <b>Хелон</b> происходит от слова «холь» — будничное, песок. Моше благословил Зевулуна словами:
+      </p>
+      <div class="quote-block">
+        «Сокровища, сокрытые в песке» (сфуней тмуней холь)
+      </div>
+      <p class="name-text">
+        Это означает, что еврей берёт <b>будничные дела, торговлю и материальные блага</b> (холь) и извлекает из них искры святости, отдавая часть на благотворительность.
+      </p>
+    </div>
+
+    <div class="name-section">
+      <div class="name-row">
+        <span class="name-he">אֱלִיאָב</span>
+        <span class="name-ru">Элиав</span>
+        <span class="name-meaning">«Эли-Ав» — Мой Бог — Отец</span>
+      </div>
+      <p class="name-text">
+        Имя <b>Эли-Ав</b> буквально означает «Мой Бог — Отец». Эта духовная работа рождает осознание: почему мы помогаем друг другу? Потому что все мы — сыновья одного Творца.
+      </p>
+      <div class="quote-block">
+        «Разве не один Отец у всех нас? Разве не один Бог сотворил нас?» — пророк Малахи
+      </div>
+      <p class="name-text">
+        Осознание того, что мы братья перед единым Отцом, и есть истинная причина, побуждающая давать цдаку.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Conclusion -->
+<div class="conclusion">
+  <div class="title">ברכת הרב לוי יצחק לרבי</div>
+  <p class="blessing">
+    Своё длинное и глубокое послание рабби Леви Ицхак завершил искренним отцовским благословением Ребе, которое звучит как напутствие всем нам:<br><br>
+    <b>«И да поможет нам Всевышний направить мысли к истинной сути Торы... Будь тверд и мужествен в них на радость сердцу твоего отца, желающего тебе блага, счастья и успеха всегда, во все дни»</b>
+  </p>
+  <div class="sig2">Пусть эти слова вдохновят нас на молитву · Тору · любовь к ближнему</div>
+</div>
+
+</main>
+
+<footer>נְשִׂיאִים · Несиим · Нисан · Paris — Тарцаз · Письмо рабби Леви Ицхака</footer>
+
+</body>
+</html>
