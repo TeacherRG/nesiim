@@ -19,6 +19,12 @@
   <h1 class="ru" data-lang="uk" style="display:none">Несіїм · Нісан</h1>
 </header>
 
+<!-- Print-only header (hidden on screen, shown when printing) -->
+<div class="print-only print-header" id="print-header">
+  <div style="font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:2.4rem;font-weight:900;color:#18100a;direction:rtl;line-height:1">נְשִׂיאִים</div>
+  <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.85rem;color:#6b4a28;letter-spacing:.3em;text-transform:uppercase;margin-top:5px;direction:ltr" id="print-header-sub">Несиим · Нисан</div>
+  <div style="font-size:.75rem;color:#b8860b;margin-top:4px;font-style:italic;direction:ltr" id="print-header-url">nesiim.mychitas.app</div>
+</div>
 <!-- Notification consent banner (shown only if permission not yet decided) -->
 <div id="notif-banner" role="region" aria-label="Уведомления">
   <span class="nb-text" id="notif-banner-text">
@@ -52,6 +58,10 @@
     <button class="top-menu-item" onclick="shareProject(event)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
       <span>Поделиться</span>
+    </button>
+    <button class="top-menu-item" id="print-menu-btn" onclick="printDay(event)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      <span id="print-menu-label">Распечатать день</span>
     </button>
   </div>
   <div class="settings-panel" id="settings-panel">

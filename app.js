@@ -156,6 +156,17 @@ function setLang(l) {
     var fsText = l === 'he' ? 'גודל גופן' : l === 'de' ? 'Schriftgröße' : l === 'uk' ? 'Розмір шрифту' : 'Размер шрифта';
     fsLabel.innerHTML = fsText + ' <span id="fs-val">' + (fsSpan ? fsSpan.textContent : '100%') + '</span>';
   }
+  // Update print header subtitle
+  var printSub = document.getElementById('print-header-sub');
+  if (printSub) {
+    if (l === 'he') printSub.textContent = 'נְשִׂיאִים · נִיסָן';
+    else if (l === 'de') printSub.textContent = 'Nesiim · Nissan';
+    else if (l === 'uk') printSub.textContent = 'Несіїм · Нісан';
+    else printSub.textContent = 'Несиим · Нисан';
+  }
+  // Update print menu label
+  var printLabel = document.getElementById('print-menu-label');
+  if (printLabel) printLabel.textContent = l === 'he' ? 'הדפסת היום' : l === 'de' ? 'Tag drucken' : l === 'uk' ? 'Роздрукувати день' : 'Распечатать день';
   // Save language preference
   try { localStorage.setItem('nesiim-lang', l); } catch(e) {}
 }
@@ -198,6 +209,13 @@ function openAbout(e) {
 
 function closeAbout() {
   document.getElementById('about-overlay').classList.remove('open');
+}
+
+function printDay(e) {
+  if (e) e.stopPropagation();
+  document.getElementById('top-menu-panel').classList.remove('open');
+  document.getElementById('top-menu-btn').classList.remove('on');
+  window.print();
 }
 
 function shareProject(e) {
