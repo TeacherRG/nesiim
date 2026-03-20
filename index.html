@@ -54,10 +54,6 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 .social-bar{text-align:center;padding:24px 20px 18px;border-top:1px dashed var(--border);margin-top:10px}
 .social-bar-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);direction:ltr;margin-bottom:14px}
 .social-btns{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
-.soc-btn{display:inline-flex;align-items:center;gap:7px;padding:5px 16px;border-radius:4px;font-size:.85rem;font-family:'Crimson Pro',serif;text-decoration:none;border:1px solid;cursor:pointer;transition:all .18s;line-height:1.3;white-space:nowrap}
-.soc-btn-vk{color:#4a76a8;border-color:#4a76a8;background:none}.soc-btn-vk:hover{background:#4a76a8;color:#fff}
-.soc-btn-tg{color:#0088cc;border-color:#0088cc;background:none}.soc-btn-tg:hover{background:#0088cc;color:#fff}
-.soc-btn-fb{color:#1877f2;border-color:#1877f2;background:none}.soc-btn-fb:hover{background:#1877f2;color:#fff}
 @media(max-width:580px){.vr,.col-h{grid-template-columns:1fr}.hc{border-left:none;border-bottom:1px solid var(--gold-ll)}.ch:last-child{display:none}.pi{padding:16px}}
 .prog-wrap{padding:8px 16px;background:var(--parchment-d);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
 .prog-bar{flex:1;height:8px;background:rgba(184,134,11,.2);border-radius:4px;overflow:hidden}
@@ -536,21 +532,14 @@ body.lang-he #notif-banner{direction:rtl}
   <div class="social-bar-label" data-lang="de" style="display:none">Gefällt es Ihnen? Teilen Sie es!</div>
   <div class="social-bar-label" data-lang="he" style="display:none" dir="rtl">אהבתם? שתפו</div>
   <div class="social-btns">
-    <!-- Facebook Like (iframe plugin, shows real count) -->
-    <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fnesiim.mychitas.app&width=140&layout=button_count&action=like&size=large&share=false&height=28&locale=ru_RU"
-      width="140" height="28"
-      style="border:none;overflow:hidden;vertical-align:middle"
-      scrolling="no" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-    <!-- VKontakte -->
-    <a href="https://vk.com/share.php?url=https%3A%2F%2Fnesiim.mychitas.app&title=%D0%9D%D0%B5%D1%81%D0%B8%D0%B8%D0%BC+%E2%80%94+%D0%9D%D0%B8%D1%81%D0%B0%D0%BD+5786" target="_blank" rel="noopener" class="soc-btn soc-btn-vk">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.392 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1.01-1.49-.114-1.49 1.014 0 .287-.23.713-.913.713H11.56c-1.523 0-3.21-.94-4.397-2.715-1.803-2.572-2.297-4.487-2.297-4.878 0-.233.175-.413.413-.413h1.744c.55 0 .757.246.97.853.76 2.234 2.039 4.192 2.565 4.192.196 0 .287-.09.287-.59V9.98c-.063-1.063-.624-1.152-.624-1.534 0-.222.185-.412.473-.412h2.74c.472 0 .63.247.63.8v3.217c0 .473.21.636.34.636.196 0 .363-.163.714-.515 1.104-1.237 1.893-3.14 1.893-3.14.11-.233.31-.45.84-.45h1.744c.524 0 .638.27.524.638-.22.998-2.362 4.045-2.362 4.045-.186.298-.248.43 0 .762.186.245.792.77 1.197 1.235.738.836 1.306 1.538 1.46 2.025.157.479-.1.72-.622.72z"/></svg>
-      ВКонтакте
-    </a>
-    <!-- Telegram -->
-    <a href="https://t.me/share/url?url=https%3A%2F%2Fnesiim.mychitas.app&text=%D0%9D%D0%B5%D1%81%D0%B8%D0%B8%D0%BC+%E2%80%94+%D0%B5%D0%B6%D0%B5%D0%B4%D0%BD%D0%B5%D0%B2%D0%BD%D0%BE%D0%B5+%D1%87%D1%82%D0%B5%D0%BD%D0%B8%D0%B5+%D0%BF%D1%80%D0%B8%D0%BD%D0%BE%D1%88%D0%B5%D0%BD%D0%B8%D0%B9+%D0%BD%D0%B5%D1%81%D0%B8%D0%B8%D0%BC+%D0%B2+%D0%9D%D0%B8%D1%81%D0%B0%D0%BD" target="_blank" rel="noopener" class="soc-btn soc-btn-tg">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-2.05 9.673c-.152.677-.554.843-1.12.524l-3.1-2.285-1.496 1.44c-.166.165-.304.304-.622.304l.222-3.16 5.74-5.185c.25-.22-.054-.342-.387-.122L7.32 14.663l-3.065-.957c-.667-.208-.68-.667.14-.987l11.97-4.614c.556-.2 1.042.137.867.987z"/></svg>
-      Telegram
-    </a>
+    <div id="fb-root"></div>
+    <div class="fb-like"
+      data-href="https://nesiim.mychitas.app"
+      data-width=""
+      data-layout="button_count"
+      data-action="like"
+      data-size="large"
+      data-share="false"></div>
   </div>
 </div>
 
@@ -986,5 +975,7 @@ window.notifDismiss = function() {
   await initNotifications(lang);
 })();
 </script>
+<script async defer crossorigin="anonymous"
+  src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v19.0&appId=4425346981126526"></script>
 </body>
 </html>
