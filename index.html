@@ -138,6 +138,13 @@ body.lang-he #notif-banner{direction:rtl}
 </style>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>
+window.fbAsyncInit = function() {
+  FB.init({appId:'4425346981126526',xfbml:true,version:'v19.0'});
+};
+(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://connect.facebook.net/ru_RU/sdk.js";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));
+</script>
 <header>
   <span class="orn">✦ ✦ ✦</span>
   <h1 class="he">נְשִׂיאִים</h1>
@@ -534,7 +541,6 @@ body.lang-he #notif-banner{direction:rtl}
   <div class="social-bar-label" data-lang="de" style="display:none">Gefällt es Ihnen? Teilen Sie es!</div>
   <div class="social-bar-label" data-lang="he" style="display:none" dir="rtl">אהבתם? שתפו</div>
   <div class="social-btns">
-    <div id="fb-root"></div>
     <div class="fb-like"
       data-href="https://nesiim.mychitas.app"
       data-width=""
@@ -977,7 +983,5 @@ window.notifDismiss = function() {
   await initNotifications(lang);
 })();
 </script>
-<script async defer crossorigin="anonymous"
-  src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v19.0&appId=4425346981126526"></script>
 </body>
 </html>
