@@ -142,8 +142,10 @@ body.lang-he #notif-banner{direction:rtl}
 <script>
 window.fbAsyncInit = function() {
   FB.init({appId:'4425346981126526',xfbml:true,version:'v19.0'});
+  FB.XFBML.parse();
 };
 (function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://connect.facebook.net/ru_RU/sdk.js";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));
+setTimeout(function(){var c=document.querySelector('.fb-like');if(c&&!c.querySelector('iframe')){document.getElementById('fb-fallback').style.display='inline-block';}},5000);
 </script>
 <header>
   <span class="orn">✦ ✦ ✦</span>
@@ -548,6 +550,7 @@ window.fbAsyncInit = function() {
       data-action="like"
       data-size="large"
       data-share="false"></div>
+    <a id="fb-fallback" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnesiim.mychitas.app" target="_blank" rel="noopener" style="display:none;background:#1877f2;color:#fff;padding:6px 14px;border-radius:4px;font-size:.9rem;text-decoration:none;font-family:sans-serif">👍 Нравится</a>
   </div>
 </div>
 
