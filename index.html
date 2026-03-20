@@ -56,6 +56,8 @@ footer{text-align:center;padding:28px 20px;font-size:.8rem;color:var(--ink-soft)
 .social-bar{text-align:center;padding:24px 20px 18px;border-top:1px dashed var(--border);margin-top:10px}
 .social-bar-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);direction:ltr;margin-bottom:14px}
 .social-btns{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+.fb-share-btn{display:inline-flex;align-items:center;background:#1877f2;color:#fff;padding:8px 16px;border-radius:6px;font-size:.88rem;font-family:sans-serif;text-decoration:none;font-weight:600;transition:background .2s}
+.fb-share-btn:hover{background:#166fe5}
 @media(max-width:580px){.vr,.col-h{grid-template-columns:1fr}.hc{border-left:none;border-bottom:1px solid var(--gold-ll)}.ch:last-child{display:none}.pi{padding:16px}}
 .prog-wrap{padding:8px 16px;background:var(--parchment-d);border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
 .prog-bar{flex:1;height:8px;background:rgba(184,134,11,.2);border-radius:4px;overflow:hidden}
@@ -138,15 +140,6 @@ body.lang-he #notif-banner{direction:rtl}
 </style>
 </head>
 <body>
-<div id="fb-root"></div>
-<script>
-window.fbAsyncInit = function() {
-  FB.init({appId:'4425346981126526',xfbml:true,version:'v19.0'});
-  FB.XFBML.parse();
-};
-(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src="https://connect.facebook.net/ru_RU/sdk.js";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));
-setTimeout(function(){var c=document.querySelector('.fb-like');if(c&&!c.querySelector('iframe')){document.getElementById('fb-fallback').style.display='inline-block';}},5000);
-</script>
 <header>
   <span class="orn">✦ ✦ ✦</span>
   <h1 class="he">נְשִׂיאִים</h1>
@@ -543,14 +536,10 @@ setTimeout(function(){var c=document.querySelector('.fb-like');if(c&&!c.querySel
   <div class="social-bar-label" data-lang="de" style="display:none">Gefällt es Ihnen? Teilen Sie es!</div>
   <div class="social-bar-label" data-lang="he" style="display:none" dir="rtl">אהבתם? שתפו</div>
   <div class="social-btns">
-    <div class="fb-like"
-      data-href="https://nesiim.mychitas.app"
-      data-width=""
-      data-layout="button_count"
-      data-action="like"
-      data-size="large"
-      data-share="false"></div>
-    <a id="fb-fallback" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnesiim.mychitas.app" target="_blank" rel="noopener" style="display:none;background:#1877f2;color:#fff;padding:6px 14px;border-radius:4px;font-size:.9rem;text-decoration:none;font-family:sans-serif">👍 Нравится</a>
+    <a class="fb-share-btn" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fnesiim.mychitas.app" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff" style="vertical-align:middle;margin-right:6px"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.887v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+      Нравится
+    </a>
   </div>
 </div>
 
