@@ -21,9 +21,16 @@
 
 <!-- Print-only header (hidden on screen, shown when printing) -->
 <div class="print-only print-header" id="print-header">
-  <div style="font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:2.4rem;font-weight:900;color:#18100a;direction:rtl;line-height:1">נְשִׂיאִים</div>
-  <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.85rem;color:#6b4a28;letter-spacing:.3em;text-transform:uppercase;margin-top:5px;direction:ltr" id="print-header-sub">Несиим · Нисан</div>
-  <div style="font-size:.75rem;color:#b8860b;margin-top:4px;font-style:italic;direction:ltr" id="print-header-url">nesiim.mychitas.app</div>
+  <span class="print-orn">✦ ✦ ✦</span>
+  <div class="print-title-he">נְשִׂיאִים</div>
+  <div class="print-title-sub" id="print-header-sub">Несиим · Нисан</div>
+  <div class="print-header-url">nesiim.mychitas.app</div>
+  <div class="print-day-banner" id="print-day-banner">
+    <div class="print-day-label" id="print-day-label"></div>
+    <div class="print-day-he" id="print-day-he"></div>
+    <div class="print-day-tr" id="print-day-tr"></div>
+    <div class="print-day-ref" id="print-day-ref"></div>
+  </div>
 </div>
 <!-- Notification consent banner (shown only if permission not yet decided) -->
 <div id="notif-banner" role="region" aria-label="Уведомления">
@@ -456,6 +463,18 @@
   <br>© Clubchitas 5786 · <a href="mailto:kosherletter@gmail.com" style="color:var(--gold-l);text-decoration:none">kosherletter@gmail.com</a>
   <br><span id="visit-counter"></span>
 </footer>
+<!-- Print-only footer -->
+<div class="print-only print-footer" id="print-footer">
+  <span class="print-orn">✦ ✦ ✦</span>
+  <div class="print-footer-main">
+    <span data-lang="ru">נְשִׂיאִים · Бемидбар 7–8 · Нисан 5786 · На основе текста Chabad.org</span>
+    <span data-lang="de" style="display:none">נְשִׂיאִים · Bamidbar 7–8 · Nissan 5786 · Basierend auf dem Text von Chabad.org</span>
+    <span data-lang="he" style="display:none" dir="rtl">נְשִׂיאִים · בְּמִדְבַּר ז׳–ח׳ · נִיסָן תשפ״ו · מבוסס על טקסט Chabad.org</span>
+    <span data-lang="uk" style="display:none">נְשִׂיאִים · Бемідбар 7–8 · Нісан 5786 · На основі тексту Chabad.org</span>
+  </div>
+  <div>© Clubchitas 5786 · kosherletter@gmail.com</div>
+  <div class="print-footer-url">nesiim.mychitas.app</div>
+</div>
 <script src="i18n.js"></script>
 <script src="app.js"></script>
 <!-- About modal -->
