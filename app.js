@@ -79,6 +79,40 @@ function show(n) {
   document.querySelectorAll('.nb')[n - 1].classList.add('on');
   activeDay = n;
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  updatePrintDayBanner();
+}
+
+function updatePrintDayBanner() {
+  var dayEl = document.getElementById('d' + activeDay);
+  if (!dayEl) return;
+  var langSel = document.getElementById('lang-sel');
+  var lang = langSel ? langSel.value : 'ru';
+
+  var labelEl = document.getElementById('print-day-label');
+  if (labelEl) {
+    var dlabel = dayEl.querySelector('.dlabel');
+    labelEl.textContent = dlabel ? dlabel.textContent : '';
+  }
+  var heEl = document.getElementById('print-day-he');
+  if (heEl) {
+    var dhe = dayEl.querySelector('.dhe');
+    heEl.textContent = dhe ? dhe.textContent : '';
+  }
+  var trEl = document.getElementById('print-day-tr');
+  if (trEl) {
+    if (lang === 'he') {
+      trEl.style.display = 'none';
+    } else {
+      var dru = dayEl.querySelector('.dru[data-lang="' + lang + '"]');
+      trEl.textContent = dru ? dru.textContent : '';
+      trEl.style.display = '';
+    }
+  }
+  var refEl = document.getElementById('print-day-ref');
+  if (refEl) {
+    var ref = dayEl.querySelector('.ref');
+    refEl.textContent = ref ? ref.textContent : '';
+  }
 }
 
 function setLang(l) {
@@ -167,6 +201,8 @@ function setLang(l) {
   // Update print menu label
   var printLabel = document.getElementById('print-menu-label');
   if (printLabel) printLabel.textContent = l === 'he' ? 'הדפסת היום' : l === 'de' ? 'Tag drucken' : l === 'uk' ? 'Роздрукувати день' : 'Распечатать день';
+  // Update print day banner for new language
+  updatePrintDayBanner();
   // Save language preference
   try { localStorage.setItem('nesiim-lang', l); } catch(e) {}
 }

@@ -144,21 +144,29 @@ body.lang-he #notif-banner{direction:rtl}
   .read-btn,
   .reset-btn{display:none!important}
   body{background:#fdf8ee!important;margin:0;padding:0;font-family:'Crimson Pro',Georgia,serif}
-  /* Print header */
-  body::before{
-    content:'';
-    display:block
-  }
-  .print-header{display:block!important;text-align:center;padding:18px 0 14px;border-bottom:3px double #b8860b;margin-bottom:0}
-  /* Show only active day, hide others */
+  /* Print-only blocks (header, footer, day banner) */
+  .print-only{display:block!important}
+  /* ---- Print header ---- */
+  .print-header{text-align:center;padding:14px 0 0;border-bottom:3px double #b8860b;margin-bottom:0;page-break-after:avoid;break-after:avoid}
+  .print-orn{font-size:.78rem;color:#b8860b!important;letter-spacing:.55em;display:block;margin-bottom:7px}
+  .print-title-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:2.2rem;font-weight:900;color:#18100a!important;direction:rtl;line-height:1}
+  .print-title-sub{font-family:'Crimson Pro',Georgia,serif;font-size:.8rem;color:#6b4a28!important;letter-spacing:.3em;text-transform:uppercase;margin-top:5px;direction:ltr}
+  .print-header-url{font-size:.7rem;color:#b8860b!important;font-style:italic;margin-top:3px;direction:ltr}
+  /* ---- Print day banner ---- */
+  .print-day-banner{margin-top:10px;padding:12px 0 14px;border-top:2px solid rgba(184,134,11,.35);text-align:center;background:linear-gradient(135deg,#f5e9c8,#f2e8cc)!important;border-bottom:2px solid rgba(184,134,11,.35)}
+  .print-day-label{font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:#b8860b!important;margin-bottom:7px;direction:ltr}
+  .print-day-he{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1.55rem;font-weight:900;color:#18100a!important;direction:rtl;line-height:1.3}
+  .print-day-tr{font-size:.9rem;color:#6b4a28!important;font-style:italic;margin-top:4px;direction:ltr}
+  .print-day-ref{font-size:.67rem;color:#d4a843!important;letter-spacing:.12em;margin-top:5px;direction:ltr}
+  /* Hebrew mode — RTL banner */
+  body.lang-he .print-day-banner{direction:rtl}
+  body.lang-he .print-day-label{direction:rtl}
+  body.lang-he .print-day-ref{direction:rtl}
+  /* ---- Show only active day, hide others ---- */
   .day{display:none!important}
-  .day.on{display:block!important;page-break-inside:avoid}
-  /* Day head */
-  .day-head{padding:20px 24px 14px;border-bottom:1px solid rgba(184,134,11,.4);text-align:center}
-  .dlabel{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#b8860b!important;margin-bottom:8px;direction:ltr}
-  .dhe{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1.9rem;font-weight:900;color:#18100a!important;direction:rtl;line-height:1.3}
-  .dru{font-size:.95rem;color:#6b4a28!important;font-style:italic;margin-top:3px;direction:ltr}
-  .ref{font-size:.72rem;color:#d4a843!important;letter-spacing:.1em;margin-top:6px;display:inline-block}
+  .day.on{display:block!important;page-break-before:avoid;break-before:avoid}
+  /* Day head — hide it in print body (already shown in print-day-banner) */
+  .day-head{display:none!important}
   /* Intro band */
   .intro-band{background:#f2e8cc!important;border-top:2px solid #b8860b;border-bottom:2px solid #b8860b}
   .intro-label{text-align:center;padding:6px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#b8860b!important;border-bottom:1px solid rgba(184,134,11,.3)}
@@ -168,7 +176,7 @@ body.lang-he #notif-banner{direction:rtl}
   .ch:first-child{text-align:right;direction:rtl}
   .ch:last-child{text-align:left}
   /* Verse rows */
-  .vr{display:grid!important;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(184,134,11,.2);page-break-inside:avoid}
+  .vr{display:grid!important;grid-template-columns:1fr 1fr;border-bottom:1px solid rgba(184,134,11,.2);page-break-inside:avoid;break-inside:avoid}
   .hc{padding:12px 18px 12px 10px;direction:rtl;text-align:right;border-left:2px solid #f0dfa0;font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1rem;line-height:1.9;color:#18100a!important}
   .rc-wrap{display:block!important}
   .rc{padding:12px 10px 12px 18px;direction:ltr;text-align:left;font-size:.88rem;line-height:1.8;color:#3a2510!important}
@@ -179,19 +187,18 @@ body.lang-he #notif-banner{direction:rtl}
   body.lang-he .vr{grid-template-columns:1fr!important}
   body.lang-he .rc-wrap{display:none!important}
   body.lang-he .hc{border-left:none}
-  body.lang-he .dlabel{direction:rtl}
-  body.lang-he .dru{display:none!important}
   body.lang-he .pru{display:none!important}
-  /* Hebrew RTL: push day-head text right */
-  body.lang-he .day-head{direction:rtl}
-  body.lang-he .ref{direction:rtl}
   /* Prayer section */
-  .pw{margin:20px 14px 10px;border:2px solid #b8860b!important;background:linear-gradient(135deg,#f2e8cc,#f5e9c8)!important;page-break-inside:avoid}
+  .pw{margin:20px 14px 10px;border:2px solid #b8860b!important;background:linear-gradient(135deg,#f2e8cc,#f5e9c8)!important;page-break-inside:avoid;break-inside:avoid}
   .ptb{background:#f0dfa0!important;border-bottom:1px solid #b8860b;padding:7px 18px;text-align:center;font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1rem;font-weight:700;color:#7a1c1c!important;direction:rtl}
   .pi{padding:16px 22px}
   .phe{font-family:'Noto Serif Hebrew','Frank Ruhl Libre',serif;font-size:1rem;line-height:2;color:#18100a!important;direction:rtl}
   .pru{font-size:.85rem;line-height:1.8;color:#3a2510!important;direction:ltr;margin-top:12px;padding-top:12px;border-top:1px solid rgba(184,134,11,.3);font-style:italic}
-  /* Print-only site header block */
-  .print-only{display:block!important}
-  @page{margin:15mm 14mm}
+  /* ---- Print footer ---- */
+  .print-footer{text-align:center;padding:14px 0 0;border-top:3px double #b8860b;margin-top:18px;direction:ltr}
+  .print-footer-main{font-size:.72rem;color:#6b4a28!important;font-style:italic;margin:6px 0 4px}
+  .print-footer > div:not(.print-footer-main){font-size:.7rem;color:#6b4a28!important;margin-top:3px}
+  .print-footer-url{color:#b8860b!important;letter-spacing:.06em}
+  body.lang-he .print-footer{direction:rtl}
+  @page{margin:14mm 14mm}
 }
