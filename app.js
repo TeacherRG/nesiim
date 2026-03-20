@@ -87,7 +87,7 @@ function setLang(l) {
     b.classList.toggle('on', b.getAttribute('data-lang') === l);
   });
   // Show/hide content by data-lang attribute (skip lang buttons themselves)
-  ['ru', 'de', 'he'].forEach(function(lang) {
+  ['ru', 'de', 'he', 'uk'].forEach(function(lang) {
     document.querySelectorAll('[data-lang="' + lang + '"]').forEach(function(el) {
       if (!el.classList.contains('lbtn')) {
         el.style.display = (lang === l) ? '' : 'none';
@@ -97,40 +97,43 @@ function setLang(l) {
   // Hebrew-only mode: apply/remove body class for CSS layout (single column)
   document.body.classList.toggle('lang-he', l === 'he');
   // Update day labels (dlabel)
-  var dlabels = l === 'he' ? DLABEL_HE : l === 'de' ? DLABEL_DE : DLABEL_RU;
+  var dlabels = l === 'he' ? DLABEL_HE : l === 'de' ? DLABEL_DE : l === 'uk' ? DLABEL_UK : DLABEL_RU;
   document.querySelectorAll('.dlabel').forEach(function(el, i) {
     if (i < dlabels.length) el.textContent = dlabels[i];
   });
   // Update scripture references (.ref) — swap book name per language
   document.querySelectorAll('.ref').forEach(function(el) {
     var txt = el.textContent
-      .replace(/בְּמִדְבַּר|Bamidbar|Бемидбар/g, 'X');
-    var bookName = l === 'he' ? 'בְּמִדְבַּר' : l === 'de' ? 'Bamidbar' : 'Бемидбар';
+      .replace(/בְּמִדְבַּר|Bamidbar|Бемидбар|Бемідбар/g, 'X');
+    var bookName = l === 'he' ? 'בְּמִדְבַּר' : l === 'de' ? 'Bamidbar' : l === 'uk' ? 'Бемідбар' : 'Бемидбар';
     el.textContent = txt.replace('X', bookName);
   });
   // Update read buttons
-  var readText = l === 'he' ? '✓ נקרא' : l === 'de' ? '✓ Gelesen' : '✓ Прочитано';
+  var readText = l === 'he' ? '✓ נקרא' : l === 'de' ? '✓ Gelesen' : l === 'uk' ? '✓ Прочитано' : '✓ Прочитано';
   document.querySelectorAll('.read-btn').forEach(function(btn) {
     btn.textContent = readText;
   });
   // Update reset button
   var resetEl = document.querySelector('.reset-btn');
-  if (resetEl) resetEl.textContent = l === 'he' ? '↺ איפוס' : l === 'de' ? '↺ Reset' : '↺ Сброс';
+  if (resetEl) resetEl.textContent = l === 'he' ? '↺ איפוס' : l === 'de' ? '↺ Reset' : l === 'uk' ? '↺ Скинути' : '↺ Сброс';
   // Update intro band label (exists only in day 1)
   document.querySelectorAll('.intro-label').forEach(function(el) {
     if (l === 'he') el.textContent = 'פסוקי פתיחה · נקראים ביום הראשון';
     else if (l === 'de') el.textContent = 'Einleitungsverse · werden am ersten Tag gelesen';
+    else if (l === 'uk') el.textContent = 'Вступні вірші · читаються в перший день';
     else el.textContent = 'Вводные стихи · читаются в первый день';
   });
   // Update prayer box titles (.ptb)
   document.querySelectorAll('.ptb').forEach(function(el) {
     if (l === 'he') el.textContent = 'יְהִי רָצוֹן';
     else if (l === 'de') el.textContent = 'יְהִי רָצוֹן — Gebet';
+    else if (l === 'uk') el.textContent = 'יְהִי רָצוֹן — Молитва';
     else el.textContent = 'יְהִי רָצוֹן — Молитва';
   });
   // Update column header for translation column
   document.querySelectorAll('.col-h .ch:last-child').forEach(function(el) {
     if (l === 'de') el.textContent = 'Übersetzung';
+    else if (l === 'uk') el.textContent = 'Переклад';
     else el.textContent = 'Перевод';
   });
   // Re-apply read state (textContent was overwritten for read-btns)
@@ -144,13 +147,13 @@ function setLang(l) {
   if (langSel) langSel.value = l;
   // Update settings labels for current language
   var langLabel = document.getElementById('lang-label');
-  if (langLabel) langLabel.textContent = l === 'he' ? 'שפה' : l === 'de' ? 'Sprache' : 'Язык';
+  if (langLabel) langLabel.textContent = l === 'he' ? 'שפה' : l === 'de' ? 'Sprache' : l === 'uk' ? 'Мова' : 'Язык';
   var fontLabel = document.getElementById('font-label');
-  if (fontLabel) fontLabel.textContent = l === 'he' ? 'גופן' : l === 'de' ? 'Schriftart' : 'Вид шрифта';
+  if (fontLabel) fontLabel.textContent = l === 'he' ? 'גופן' : l === 'de' ? 'Schriftart' : l === 'uk' ? 'Шрифт' : 'Вид шрифта';
   var fsLabel = document.querySelector('#settings-panel .settings-group label');
   if (fsLabel) {
     var fsSpan = document.getElementById('fs-val');
-    var fsText = l === 'he' ? 'גודל גופן' : l === 'de' ? 'Schriftgröße' : 'Размер шрифта';
+    var fsText = l === 'he' ? 'גודל גופן' : l === 'de' ? 'Schriftgröße' : l === 'uk' ? 'Розмір шрифту' : 'Размер шрифта';
     fsLabel.innerHTML = fsText + ' <span id="fs-val">' + (fsSpan ? fsSpan.textContent : '100%') + '</span>';
   }
   // Save language preference
@@ -278,7 +281,7 @@ function applyFont(val) {
   var _savedLang = null;
   try { _savedLang = localStorage.getItem('nesiim-lang'); } catch(e) {}
   var _browserLang = (navigator.language || navigator.userLanguage || 'ru').toLowerCase().substring(0, 2);
-  var _initLang = _savedLang || (['ru','de','he'].indexOf(_browserLang) !== -1 ? _browserLang : 'ru');
+  var _initLang = _savedLang || (['ru','de','he','uk'].indexOf(_browserLang) !== -1 ? _browserLang : 'ru');
   setLang(_initLang);
   updateReadUI();
   var nisan1 = new Date(2026, 2, 19);
