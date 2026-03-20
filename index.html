@@ -16,6 +16,7 @@
   <h1 class="ru" data-lang="ru">Несиим · Нисан</h1>
   <h1 class="ru" data-lang="de" style="display:none">Nesiim · Nissan</h1>
   <h1 class="ru" data-lang="he" style="display:none">נְשִׂיאִים · נִיסָן</h1>
+  <h1 class="ru" data-lang="uk" style="display:none">Несіїм · Нісан</h1>
 </header>
 
 <!-- Notification consent banner (shown only if permission not yet decided) -->
@@ -54,7 +55,7 @@
     </button>
   </div>
   <div class="settings-panel" id="settings-panel">
-    <div class="settings-group"><label id="lang-label">Язык</label><select id="lang-sel" onchange="setLang(this.value)"><option value="ru">Русский</option><option value="de">Deutsch</option><option value="he">עברית</option></select></div>
+    <div class="settings-group"><label id="lang-label">Язык</label><select id="lang-sel" onchange="setLang(this.value)"><option value="ru">Русский</option><option value="de">Deutsch</option><option value="he">עברית</option><option value="uk">Українська</option></select></div>
     <div class="settings-group"><label>Размер шрифта <span id="fs-val">100%</span></label><input type="range" id="fs-slider" min="80" max="150" value="100" step="5" oninput="applyFontSize(this.value)"></div>
     <div class="settings-group"><label id="font-label">Вид шрифта</label><select id="font-sel" onchange="applyFont(this.value)"><option value="crimson">Crimson Pro</option><option value="noto">Noto Serif Hebrew</option><option value="georgia">Georgia</option><option value="arial">Arial</option><option value="stam">Stam Ashkenaz CLM</option><option value="frank">Frank Ruhl Libre</option></select></div>
   </div>
